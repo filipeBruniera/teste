@@ -1,0 +1,31 @@
+{
+  "brand_name": "Tia Clara Pet Sitter & Dog Walker",
+  "brand_name_rules": {
+    "nome_principal": "Tia Clara",
+    "descritor": "Pet Sitter & Dog Walker",
+    "grafia": "Tia Clara (T e C maiúsculos); descritor com & (e comercial), nunca 'e' ou '+'"
+  },
+  "idea": "Criar uma identidade visual para serviço de pet sitter (visitas na casa do tutor) e dog walker (passeios)",
+  "business": {
+    "modelo": "Profissional autônoma / marca pessoal (hipótese: a própria Clara presta o serviço)",
+    "servicos": ["pet sitting em domicílio (cães e gatos)", "passeios com cães (dog walking)"],
+    "geografia": "Brasil, contexto urbano (cidade não informada)",
+    "idioma": "Português do Brasil",
+    "tier": "Hipótese: médio-alto local — profissional diferenciada de 'vizinha que passeia' e de apps de plataforma"
+  },
+  "audience": "Tutores de pets",
+  "archetypes_supplied": ["Guardiã", "Curadora", "Cuidadora"],
+  "desired_perception": ["segurança", "competência", "afeto"],
+  "avoid": ["excesso de infantilização", "ser boazinha demais", "parecer veterinária"],
+  "objective": "Transmitir confiança e diferenciar o trabalho",
+  "channels_assumed": ["Instagram (feed, stories, reels)", "WhatsApp Business (avatar, status, catálogo, relatórios)", "Perfil de Empresa no Google", "impressos: cartão, adesivo, plaquinha de identificação, chaveiro de chaves", "uniforme de passeio (camiseta/colete/bandana)", "relatório de visita"],
+  "mandatory_assets": [],
+  "prohibited_motifs": ["patinhas como símbolo principal", "ossinhos", "corações fofos", "casinha + patinha", "silhuetas de cão+gato em cartoon", "cruz / estetoscópio / azul-hospital / verde-água clínico", "fontes arredondadas infantis", "paletas de doce (rosa-chiclete, azul-bebê)"],
+  "mode": "autonomous",
+  "working_assumptions": [
+    "Clara é a prestadora do serviço; a marca é pessoal e não uma plataforma",
+    "Atende cães e gatos no pet sitting; dog walking apenas cães",
+    "Brasil, português, WhatsApp como canal principal de relacionamento",
+    "Sem restrição de cores ou símbolos pré-existentes"
+  ]
+}
