@@ -1,0 +1,32 @@
+{
+  "run_id": "tia-clara-2026-09-27",
+  "brand_name": "Tia Clara Pet Sitter & Dog Walker",
+  "phase": 9,
+  "completed_gates": ["S1", "V1", "C1", "L1", "D1", "QA"],
+  "selected_territory": "A · A Plaquinha (com a gramática de relatório do B)",
+  "selected_logo_family": "Plaquinha em arco + furo + C (Literata); logotipo 'Tia' itálico + 'Clara' redondo com argola no i",
+  "figma_file_key": null,
+  "asset_locations": {
+    "estrategia": "01-estrategia/estrategia.md",
+    "inteligencia_visual": "02-inteligencia-visual/inteligencia-visual.md",
+    "territorios": "03-territorios/",
+    "logo_master_svg": "04-logo/master/",
+    "logo_png": "04-logo/png/",
+    "tokens": "05-design-system/tokens.json",
+    "motion": "06-motion/",
+    "producao": "07-producao/",
+    "brand_book_local": "08-brand-book/index.html",
+    "brand_book_publicado": "https://claude.ai/artifact/1V1Eqd8Aw4mmLy64nD6zjK",
+    "qa": "09-qa/qa.md",
+    "scripts": "_fonte/"
+  },
+  "pending": [
+    "Decisão da Clara sobre o nome (manter 'Tia Clara' como está — recomendado — ou dar protagonismo a 'Clara')",
+    "Confirmar quais protocolos já são praticados (RTBs)",
+    "Busca de anterioridade no INPI (classe 45; também 43, 44, 35)",
+    "Dados reais nos modelos: cidade/bairro, telefone, perfil",
+    "Fotografia real dentro das regras",
+    "Confirmar na fonte a estatística de 83% (pesquisa Rover 2026)",
+    "Recriar relatório e modelos no Canva para uso diário"
+  ]
+}
