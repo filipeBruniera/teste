@@ -1,0 +1,623 @@
+/* Tia Clara — folha de estilo do site. Usa só os tokens de tokens.css (Gate D1). */
+
+/* ---------- 1. Base -------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--tc-fundo);
+  color: var(--tc-texto);
+  font: var(--tc-corpo);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+img { max-width: 100%; display: block; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+p { margin: 0; }
+h1, h2, h3 { margin: 0; font-family: var(--tc-fonte-voz); font-weight: 600; }
+a { color: inherit; }
+main, section { display: block; }
+svg { overflow: visible; }
+
+/* alvo de toque mínimo consistente para tudo que é clicável */
+a, button, summary, input, [role="button"] { min-height: 24px; }
+
+:focus { outline: none; }
+:focus-visible {
+  outline: 2px solid var(--tc-pinho);
+  outline-offset: 3px;
+  border-radius: var(--tc-raio-sm);
+}
+.tc-secao--pinho :focus-visible,
+.tc-rodape :focus-visible { outline-color: var(--tc-linho); }
+
+/* pular para o conteúdo */
+.tc-pular {
+  position: absolute;
+  left: var(--tc-e4);
+  top: -60px;
+  z-index: 100;
+  background: var(--tc-pinho);
+  color: var(--tc-linho);
+  font: var(--tc-dado);
+  font-weight: 600;
+  padding: var(--tc-e4) var(--tc-e5);
+  border-radius: var(--tc-raio-sm);
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  transition: top var(--tc-dur-micro) var(--tc-curva-firme);
+}
+.tc-pular:focus { top: var(--tc-e4); }
+
+/* ---------- 2. Layout -------------------------------------------------- */
+.tc-envolucro {
+  width: 100%;
+  max-width: 1264px;
+  margin-inline: auto;
+  padding-inline: var(--tc-e4);
+}
+@media (min-width: 768px) {
+  .tc-envolucro { padding-inline: var(--tc-e6); }
+}
+
+.tc-secao { padding-block: var(--tc-e9); background: var(--tc-fundo); }
+.tc-secao--papel { background: var(--tc-fundo-elevado); }
+.tc-secao--salvia { background: var(--tc-fundo-apoio); }
+.tc-secao--pinho { background: var(--tc-fundo-inverso); color: var(--tc-texto-inverso); }
+@media (max-width: 639px) {
+  .tc-secao { padding-block: var(--tc-e7); }
+}
+
+/* ---------- 3. Tipografia ---------------------------------------------- */
+.tc-display {
+  font: var(--tc-display);
+  font-size: clamp(2.5rem, 1.55rem + 4vw, 3.5rem);
+  letter-spacing: -0.01em;
+  margin-top: var(--tc-e5);
+  max-width: 16ch;
+}
+.tc-titulo-1 {
+  font: var(--tc-titulo-1);
+  font-size: clamp(1.75rem, 1.35rem + 1.6vw, 2.5rem);
+  margin-top: var(--tc-e3);
+  max-width: 22ch;
+}
+.tc-titulo-1--linho { color: var(--tc-linho); }
+.tc-titulo-3 { font: var(--tc-titulo-3); }
+.tc-titulo-3--linho { color: var(--tc-linho); }
+
+.tc-etiqueta { color: var(--tc-argila); display: block; }
+.tc-etiqueta--latao { color: var(--tc-latao); }
+
+.tc-afeto {
+  font: var(--tc-afeto);
+  color: var(--tc-texto);
+}
+.tc-afeto--linho { color: var(--tc-linho); }
+
+.tc-secao p:not([class]) ,
+.tc-hero__lead,
+.tc-servico > p,
+.tc-relatorio__intro > p,
+.tc-avaliacoes__intro > p,
+.tc-faq p {
+  color: var(--tc-texto-secundario);
+  max-width: var(--tc-medida-max);
+  margin-top: var(--tc-e4);
+}
+.tc-secao--pinho p,
+.tc-protocolo__texto { color: var(--tc-salvia); }
+
+strong { color: var(--tc-texto); font-weight: 600; }
+.tc-secao--pinho strong { color: var(--tc-linho); }
+
+/* lista com a argola no lugar do marcador comum */
+.tc-lista-argola { margin-top: var(--tc-e5); display: grid; gap: var(--tc-e2); max-width: var(--tc-medida-max); }
+.tc-lista-argola li {
+  position: relative;
+  padding-left: var(--tc-e5);
+  font: var(--tc-corpo);
+  font-size: 0.95rem;
+  color: var(--tc-texto-secundario);
+}
+.tc-lista-argola li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 8px;
+  height: 8px;
+  border: 1.6px solid var(--tc-pinho);
+  border-radius: 50%;
+}
+
+/* ---------- 4. Botões --------------------------------------------------- */
+.tc-botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--tc-e2);
+  font: var(--tc-corpo);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: var(--tc-e3) var(--tc-e5);
+  border-radius: var(--tc-raio-pilula);
+  border: 1.5px solid transparent;
+  min-height: 44px;
+  cursor: pointer;
+  transition: background-color var(--tc-dur-micro) var(--tc-curva-firme),
+              border-color var(--tc-dur-micro) var(--tc-curva-firme),
+              color var(--tc-dur-micro) var(--tc-curva-firme);
+}
+.tc-botao--acao {
+  background: var(--tc-acao-fundo);
+  color: var(--tc-acao-texto);
+  border-color: var(--tc-acao-fundo);
+}
+.tc-botao--acao:hover,
+.tc-botao--acao:focus-visible { background: var(--tc-pinho); border-color: var(--tc-pinho); }
+.tc-botao--acao:active { background: var(--tc-pinho-profundo); border-color: var(--tc-pinho-profundo); }
+
+.tc-botao--fantasma {
+  background: transparent;
+  color: var(--tc-pinho);
+  border-color: var(--tc-pinho);
+}
+.tc-botao--fantasma:hover,
+.tc-botao--fantasma:focus-visible { background: var(--tc-papel); }
+.tc-botao--fantasma:active { background: var(--tc-salvia); }
+
+.tc-botao--grande { padding: var(--tc-e4) var(--tc-e6); font-size: 1.05rem; }
+
+.tc-cabecalho__cta { display: none; }
+@media (min-width: 560px) {
+  .tc-cabecalho__cta { display: inline-flex; }
+}
+
+/* ---------- 5. Marcadores de dado pendente ------------------------------ */
+.tc-marcador {
+  display: inline-flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0 var(--tc-e2);
+  background: var(--tc-papel);
+  border: 1.5px dashed var(--tc-musgo);
+  border-radius: var(--tc-raio-sm);
+  padding: 3px var(--tc-e3);
+  line-height: 1.3;
+}
+.tc-marcador__etiqueta {
+  font: var(--tc-rotulo);
+  letter-spacing: var(--tc-rotulo-tracking);
+  text-transform: uppercase;
+  color: var(--tc-argila);
+}
+.tc-marcador__texto { font: var(--tc-dado); color: var(--tc-musgo); }
+.tc-marcador--bloco {
+  display: block;
+  padding: var(--tc-e5);
+  border-radius: var(--tc-raio-md);
+}
+.tc-marcador--bloco .tc-marcador__etiqueta { display: block; margin-bottom: var(--tc-e2); }
+.tc-marcador--pinho { background: var(--tc-papel); }
+
+/* ---------- 6. Marcador de foto ------------------------------------------ */
+.tc-foto {
+  position: relative;
+  background: var(--tc-salvia) repeating-linear-gradient(135deg, transparent 0 22px, rgb(30 59 51 / 0.07) 22px 24px);
+  display: flex;
+  align-items: flex-end;
+  padding: var(--tc-e5);
+}
+.tc-foto__legenda {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--tc-e2);
+  font: var(--tc-rotulo);
+  letter-spacing: var(--tc-rotulo-tracking);
+  text-transform: uppercase;
+  color: var(--tc-musgo);
+  line-height: 1.4;
+  max-width: 220px;
+}
+.tc-foto__etiqueta {
+  display: inline-block;
+  background: var(--tc-papel);
+  border: 1.5px dashed var(--tc-musgo);
+  border-radius: var(--tc-raio-sm);
+  padding: 3px var(--tc-e2);
+  color: var(--tc-argila);
+}
+
+/* ---------- 7. Ícones ----------------------------------------------------- */
+.tc-ic { flex: none; color: var(--tc-pinho); }
+.tc-secao--pinho .tc-ic { color: var(--tc-latao); }
+.tc-botao .tc-ic { color: currentColor; }
+
+/* ---------- 8. Cabeçalho -------------------------------------------------- */
+.tc-cabecalho {
+  background: var(--tc-papel);
+  border-bottom: 1px solid var(--tc-borda);
+}
+@media (min-width: 860px) {
+  .tc-cabecalho { position: sticky; top: 0; z-index: 40; }
+}
+.tc-cabecalho__linha {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--tc-e2) var(--tc-e4);
+  min-height: 72px;
+  padding-block: var(--tc-e2);
+}
+.tc-marca { margin: 0; display: flex; align-items: center; order: 1; }
+.tc-cabecalho__cta { order: 2; }
+.tc-menu { order: 3; flex-basis: 100%; }
+@media (min-width: 860px) {
+  .tc-marca { order: 1; }
+  .tc-menu { order: 2; flex-basis: auto; }
+  .tc-cabecalho__cta { order: 3; }
+}
+.tc-marca__img { height: 32px; width: auto; }
+@media (min-width: 640px) { .tc-marca__img { height: 38px; } }
+
+/* menu: <nav> simples, sempre no DOM. Sem JS, a lista fica visível (empilhada) —
+   o site funciona sem JavaScript. Com JS, a classe .tc-js (adicionada por um script
+   mínimo inline) liga o comportamento de esconder/mostrar pelo botão. */
+.tc-menu { position: relative; }
+.tc-menu__botao {
+  display: none;
+  align-items: center;
+  gap: var(--tc-e2);
+  cursor: pointer;
+  padding: var(--tc-e2) var(--tc-e3);
+  border-radius: var(--tc-raio-sm);
+  min-height: 44px;
+  background: none;
+  border: 0;
+  font: inherit;
+  color: inherit;
+  user-select: none;
+}
+.tc-menu__icone {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 22px;
+  height: 16px;
+}
+.tc-menu__icone span {
+  display: block;
+  height: 1.5px;
+  background: var(--tc-pinho);
+  border-radius: 1px;
+  transition: transform var(--tc-dur-padrao) var(--tc-curva-firme),
+              opacity var(--tc-dur-micro) var(--tc-curva-firme);
+}
+.tc-menu[data-aberto="true"] .tc-menu__icone span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.tc-menu[data-aberto="true"] .tc-menu__icone span:nth-child(2) { opacity: 0; }
+.tc-menu[data-aberto="true"] .tc-menu__icone span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+.tc-menu__rotulo { font: var(--tc-rotulo); font-size: 0.75rem; letter-spacing: var(--tc-rotulo-tracking); text-transform: uppercase; }
+
+.tc-menu__lista {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tc-e1);
+  padding: var(--tc-e3) 0 var(--tc-e4);
+}
+.tc-menu__lista a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding-inline: var(--tc-e2);
+  border-radius: var(--tc-raio-sm);
+  text-decoration: none;
+  font-weight: 500;
+}
+.tc-menu__lista a:hover,
+.tc-menu__lista a:focus-visible { background: var(--tc-salvia); }
+
+/* JS ligado: some por padrão, o botão passa a controlar */
+html.tc-js .tc-menu__botao { display: flex; }
+html.tc-js .tc-menu__lista {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: calc(100% + var(--tc-e2));
+  min-width: 260px;
+  background: var(--tc-papel);
+  border: 1px solid var(--tc-borda);
+  border-radius: var(--tc-raio-md);
+  padding: var(--tc-e3);
+  z-index: 1;
+}
+html.tc-js .tc-menu[data-aberto="true"] .tc-menu__lista { display: flex; }
+
+@media (min-width: 860px) {
+  .tc-menu__botao,
+  html.tc-js .tc-menu__botao { display: none; }
+  .tc-menu__lista,
+  html.tc-js .tc-menu__lista {
+    display: flex !important;
+    position: static;
+    flex-direction: row;
+    gap: var(--tc-e6);
+    background: none;
+    border: 0;
+    padding: 0;
+  }
+  .tc-menu__lista a { min-height: auto; padding: var(--tc-e2) 0; font-size: 0.95rem; }
+  .tc-menu__lista a:hover,
+  .tc-menu__lista a:focus-visible { background: none; color: var(--tc-argila); }
+}
+
+/* ---------- 9. Hero -------------------------------------------------------- */
+.tc-hero { padding-block: var(--tc-e7) var(--tc-e9); }
+.tc-hero__grade { display: grid; gap: var(--tc-e8); }
+.tc-hero__lead {
+  font-size: 1.1rem;
+  line-height: 1.55;
+  color: var(--tc-texto-secundario);
+  max-width: 46ch;
+  margin-top: var(--tc-e4);
+}
+.tc-hero__cta { display: flex; flex-wrap: wrap; gap: var(--tc-e3); margin-top: var(--tc-e6); }
+.tc-hero__provas {
+  display: grid;
+  gap: var(--tc-e3);
+  margin-top: var(--tc-e8);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.tc-hero__prova { display: flex; align-items: center; gap: var(--tc-e2); }
+
+.tc-hero__visual { position: relative; }
+.tc-hero__foto {
+  width: min(420px, 100%);
+  aspect-ratio: 100 / 112;
+  margin-inline: auto;
+}
+.tc-hero__cartao { margin: calc(var(--tc-e7) * -1) auto 0; max-width: 320px; position: relative; z-index: 1; }
+
+@media (min-width: 860px) {
+  .tc-hero__grade { grid-template-columns: 1.15fr 1fr; align-items: start; }
+  .tc-hero__foto { width: 100%; margin-inline: 0 0 0 auto; }
+  .tc-hero__cartao { margin: calc(var(--tc-e9) * -1) 0 0 0; }
+}
+
+/* cartão-relatório (versão reduzida do hero + base compartilhada) */
+.tc-cartao-relatorio {
+  background: var(--tc-papel);
+  border: 1px solid var(--tc-borda);
+  border-radius: var(--tc-raio-lg);
+  padding: var(--tc-e5);
+}
+.tc-cartao-relatorio__topo { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--tc-e3); }
+.tc-cartao-relatorio__simbolo { height: 22px; width: auto; }
+
+.tc-registros { display: grid; }
+.tc-registro {
+  display: flex;
+  align-items: center;
+  gap: var(--tc-e3);
+  padding-block: var(--tc-e2);
+  border-bottom: 1px solid var(--tc-borda);
+  font-size: 0.95rem;
+}
+.tc-registro:last-child { border-bottom: 0; }
+.tc-registro__hora { width: 3.4em; flex: none; font-weight: 500; }
+
+.tc-hero__cartao .tc-afeto { margin-top: var(--tc-e4); font-size: 1.2rem; }
+
+/* ---------- 10. Serviços ---------------------------------------------------- */
+.tc-servicos {
+  display: grid;
+  gap: var(--tc-e7);
+  margin-top: var(--tc-e7);
+}
+.tc-servico__icone { margin-bottom: var(--tc-e3); }
+.tc-servico__sub { color: var(--tc-argila); font-weight: 600; margin-top: var(--tc-e1); }
+.tc-servicos__filete { display: none; }
+
+@media (min-width: 768px) {
+  .tc-servicos { grid-template-columns: 1fr 1px 1fr; align-items: start; gap: var(--tc-e8); }
+  .tc-servicos__filete { display: block; background: var(--tc-borda); align-self: stretch; }
+}
+
+/* ---------- 11. Como funciona ------------------------------------------------ */
+.tc-passos {
+  display: grid;
+  gap: var(--tc-e7);
+  margin-top: var(--tc-e8);
+  counter-reset: passo;
+}
+.tc-passo { padding-top: var(--tc-e5); border-top: 1.5px solid var(--tc-borda); }
+.tc-passo__numero {
+  display: block;
+  color: var(--tc-argila);
+  font-weight: 700;
+  font-size: 1.75rem;
+  margin-bottom: var(--tc-e2);
+}
+.tc-passo h3 { margin-top: var(--tc-e1); }
+.tc-passo p { margin-top: var(--tc-e2); }
+
+@media (min-width: 860px) {
+  .tc-passos { grid-template-columns: repeat(3, 1fr); gap: var(--tc-e6); }
+}
+
+/* ---------- 12. Relatório de visita -------------------------------------------- */
+.tc-relatorio__grade { display: grid; gap: var(--tc-e7); }
+.tc-relatorio__intro { max-width: 46ch; }
+
+.tc-relatorio__cartao {
+  background: var(--tc-fundo-elevado);
+  border: 1px solid var(--tc-borda);
+  border-radius: var(--tc-raio-lg);
+  overflow: hidden;
+}
+.tc-relatorio__cabecalho {
+  display: flex;
+  align-items: center;
+  gap: var(--tc-e3);
+  background: var(--tc-pinho);
+  color: var(--tc-linho);
+  padding: var(--tc-e4) var(--tc-e5);
+}
+.tc-relatorio__simbolo { flex: none; }
+.tc-relatorio__rotulo { color: var(--tc-latao); margin: 0; }
+.tc-relatorio__meta { color: var(--tc-salvia); margin-top: 2px; }
+.tc-relatorio__exemplo { color: var(--tc-salvia); opacity: 0.8; }
+
+.tc-relatorio__corpo {
+  display: grid;
+  gap: var(--tc-e5);
+  padding: var(--tc-e5);
+}
+.tc-relatorio__nome { font: var(--tc-titulo-1); font-size: 2rem; margin-bottom: var(--tc-e3); }
+.tc-registros--grande .tc-registro { font-size: 1rem; }
+.tc-relatorio__foto { aspect-ratio: 100 / 112; width: 100%; max-width: 260px; margin-inline: auto; }
+
+.tc-relatorio__observacao {
+  margin: 0 var(--tc-e5) var(--tc-e5);
+  background: var(--tc-papel);
+  border-left: 3px solid var(--tc-argila);
+  border-radius: 0 var(--tc-raio-sm) var(--tc-raio-sm) 0;
+  padding: var(--tc-e4) var(--tc-e5);
+}
+.tc-relatorio__observacao-rotulo { color: var(--tc-argila); margin-bottom: var(--tc-e1); }
+.tc-relatorio__observacao p { color: var(--tc-texto); }
+
+.tc-relatorio__fecho { padding: 0 var(--tc-e5) var(--tc-e6); font-size: 1.5rem; }
+.tc-relatorio__assinatura { color: var(--tc-texto-secundario); font-style: normal; }
+
+@media (min-width: 640px) {
+  .tc-relatorio__corpo { grid-template-columns: 1.3fr 1fr; }
+  .tc-relatorio__foto { margin-inline: 0; }
+}
+@media (min-width: 1024px) {
+  .tc-relatorio__grade { grid-template-columns: 0.85fr 1.4fr; }
+}
+
+/* ---------- 13. Protocolos ------------------------------------------------------ */
+.tc-protocolos { margin-top: var(--tc-e8); display: grid; }
+.tc-protocolo {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--tc-e5);
+  padding-block: var(--tc-e5);
+  border-top: 1px solid var(--tc-latao);
+}
+.tc-protocolo:first-child { border-top-color: var(--tc-latao); }
+.tc-protocolo__numero {
+  font: var(--tc-titulo-2);
+  color: var(--tc-latao);
+  font-variant-numeric: tabular-nums;
+}
+.tc-protocolo__texto { margin-top: var(--tc-e2); max-width: 60ch; }
+.tc-protocolos__fecho { margin-top: var(--tc-e7); font-size: 1.6rem; }
+
+/* ---------- 14. Avaliações -------------------------------------------------------- */
+.tc-avaliacoes__grade { display: grid; gap: var(--tc-e7); }
+.tc-estatistica { margin-top: var(--tc-e6); max-width: 30em; }
+.tc-estatistica__numero {
+  font: var(--tc-display);
+  font-size: 3rem;
+  color: var(--tc-pinho);
+  margin-top: var(--tc-e2);
+}
+.tc-estatistica__legenda { color: var(--tc-texto-secundario); margin-top: var(--tc-e2); }
+
+.tc-depoimentos { display: grid; gap: var(--tc-e4); }
+.tc-depoimento { max-width: 46em; }
+.tc-depoimento:nth-child(3) { max-width: 38em; margin-inline-start: var(--tc-e7); }
+.tc-depoimento--alto { padding-block: var(--tc-e7); }
+.tc-depoimento--alto .tc-depoimento__texto { font-size: 1.55rem; }
+.tc-depoimento__texto { font: var(--tc-titulo-3); font-family: var(--tc-fonte-voz); font-weight: 400; color: var(--tc-texto); }
+.tc-depoimento__texto span { color: var(--tc-texto-secundario); }
+@media (max-width: 639px) {
+  .tc-depoimento:nth-child(3) { max-width: none; margin-inline-start: 0; }
+}
+
+@media (min-width: 900px) {
+  .tc-avaliacoes__grade { grid-template-columns: 0.85fr 1.15fr; align-items: start; }
+}
+
+/* ---------- 15. FAQ ------------------------------------------------------------------ */
+.tc-faq__envolucro > .tc-faq__lista { max-width: 780px; }
+.tc-faq__lista { margin-top: var(--tc-e7); display: grid; }
+.tc-faq { border-top: 1px solid var(--tc-borda); }
+.tc-faq:last-child { border-bottom: 1px solid var(--tc-borda); }
+.tc-faq summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--tc-e4);
+  list-style: none;
+  cursor: pointer;
+  padding-block: var(--tc-e5);
+  min-height: 44px;
+}
+.tc-faq summary::-webkit-details-marker { display: none; }
+.tc-faq__pergunta { font-size: 1.1rem; }
+.tc-faq__seta { flex: none; color: var(--tc-argila); transition: transform var(--tc-dur-padrao) var(--tc-curva-firme); }
+.tc-faq[open] .tc-faq__seta { transform: rotate(180deg); }
+.tc-faq p { padding-bottom: var(--tc-e5); max-width: 62ch; }
+
+/* ---------- 16. CTA WhatsApp ---------------------------------------------------------- */
+.tc-cta { background: var(--tc-fundo); }
+.tc-cta__painel {
+  background: var(--tc-fundo-elevado);
+  border: 1px solid var(--tc-borda);
+  border-radius: var(--tc-raio-lg);
+  padding: var(--tc-e7) var(--tc-e6);
+  display: grid;
+  gap: var(--tc-e6);
+}
+.tc-cta__acao { display: grid; gap: var(--tc-e3); justify-items: start; }
+
+@media (min-width: 860px) {
+  .tc-cta__painel { grid-template-columns: 1.3fr 1fr; align-items: center; }
+  .tc-cta__acao { justify-items: end; text-align: right; }
+}
+
+/* ---------- 17. Rodapé ------------------------------------------------------------------ */
+.tc-rodape { background: var(--tc-pinho); color: var(--tc-linho); padding-block: var(--tc-e8) var(--tc-e6); }
+.tc-rodape__linha {
+  display: grid;
+  gap: var(--tc-e6);
+  align-items: start;
+}
+.tc-rodape__marca { height: 44px; width: auto; }
+.tc-rodape__contatos { display: grid; gap: var(--tc-e2); }
+.tc-rodape__nav { display: flex; flex-wrap: wrap; gap: var(--tc-e2) var(--tc-e5); }
+.tc-rodape__nav a {
+  text-decoration: none;
+  color: var(--tc-salvia);
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+.tc-rodape__nav a:hover,
+.tc-rodape__nav a:focus-visible { color: var(--tc-linho); }
+
+.tc-filete { height: 1.5px; background: var(--tc-latao); border: 0; }
+.tc-filete--rodape { margin: var(--tc-e6) 0; }
+
+.tc-rodape__privacidade { color: var(--tc-salvia); max-width: 62ch; font-size: 0.9rem; }
+.tc-rodape__creditos { color: var(--tc-salvia); opacity: 0.8; font-size: 0.8rem; margin-top: var(--tc-e3); }
+
+@media (min-width: 768px) {
+  .tc-rodape__linha { grid-template-columns: auto 1fr auto; gap: var(--tc-e7); }
+}
+
+/* ---------- 18. Movimento reduzido --------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
