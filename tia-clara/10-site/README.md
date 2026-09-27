@@ -48,10 +48,23 @@ A `01-estrategia/estrategia.md` marca alguns protocolos e diferenciais como hip�
   css/site.css         estilos do site, só com var(--tc-…)
   js/site.js           opcional: sincroniza aria-expanded do menu, Esc fecha, funciona sem JS
   assets/logo/…         SVGs copiados de 04-logo/master
-  assets/fontes/…       Literata e Instrument Sans (OFL) + licenças
+  assets/fontes/…       Literata e Instrument Sans (OFL) — WOFF2 com subconjunto, ver "Fontes" abaixo
   assets/og-capa.png    imagem de compartilhamento (Open Graph), gerada no estilo das peças de autoridade — não é fotografia, é tipografia da marca
   favicon.svg / favicon.ico / apple-touch-icon.png
 ```
+
+## Fontes
+
+`assets/fontes/` guarda só as versões **web** (WOFF2, com subconjunto) de Literata e Instrument Sans — as origens completas (TTF variável) continuam em `05-design-system/fontes/`, a fonte da verdade. Quem gera as versões web é `tia-clara/_fonte/fontes-web.py` (`pip install fonttools brotli`; depois `python3 tia-clara/_fonte/fontes-web.py`), que:
+
+- Recorta o glyph set para Latin básico + Latin-1 Supplement inteiro (todos os acentos do português: á à â ã é ê í ó ô õ ú ü ç, maiúsculas incluídas) + a pontuação tipográfica usada ou prevista no site (– — “ ” ‘ ’ • …), preservando `kern`, `liga`, `ccmp`, `locl`, `calt`, `mark`, `mkmk` e os recursos de algarismo (`tnum`, `onum`, `lnum`, `pnum` — `tnum` é o que os horários de `.tc-dado` e os números de `.tc-protocolo__numero` realmente usam).
+- Restringe (`fontTools.varLib.instancer`) só os eixos variáveis que o CSS deste site **não** varia: o peso da Literata itálica (só usada em `--tc-afeto`, sempre 400) fica fixo; a largura (`wdth`) da Instrument Sans (nunca acionada — nada usa `font-stretch` nem `font-variation-settings: 'wdth'`) fica fixa em 100 (normal). Os eixos que o CSS de fato varia continuam variáveis: peso da Literata normal (400–600, títulos e corpo de depoimento), peso da Instrument Sans (400–700) e `opsz` da Literata (7–72, intocado) — o navegador ajusta o `opsz` sozinho por tamanho (`font-optical-sizing: auto`, padrão do CSS), do afeto pequeno ao display grande, então o eixo precisa continuar variável mesmo sem nenhum `font-variation-settings` explícito no CSS.
+- Não gera `InstrumentSans-Italic.woff2`: nenhum elemento do site pede itálico nesta família (o único itálico do site é a voz, em Literata) — carregar esse arquivo seria puro desperdício. Se um itálico de Instrument Sans passar a ser necessário, gere-o a partir de `05-design-system/fontes/InstrumentSans-Italic[wdth,wght].ttf` do mesmo jeito.
+- Compila direto em WOFF2 (usa o pacote `brotli`) — os `@font-face` de `css/tokens.css` já apontam pros arquivos `.woff2`, com `font-display: swap` e `unicode-range` batendo com o subconjunto.
+
+Resultado: as 4 fontes TTF (~2,2 MB juntas, sendo ~1,8 MB só de Literata) viraram 3 WOFF2 (~150 KB juntos) sem trocar peso, tamanho, itálico ou glifo nenhum do que a página realmente usa. Os `.txt` de licença (`*-OFL.txt`) continuam junto dos arquivos, como a OFL exige.
+
+Sem `<link rel="preload">` para as fontes: `css/tokens.css` já é o primeiro `<link rel="stylesheet">` do `<head>`, então o navegador descobre os `@font-face` cedo mesmo sem preload, e cada arquivo WOFF2 já é pequeno (27–76 KB). Testado sem preload e não há ganho perceptível — e um preload mal calibrado (sem `crossorigin`, ou de um arquivo que a página não acaba usando naquela largura) baixa o arquivo duas vezes ou dispara aviso de "preload não usado" no console, então foi uma troca consciente, não esquecimento.
 
 ## Acessibilidade e responsivo
 

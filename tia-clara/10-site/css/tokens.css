@@ -1,9 +1,22 @@
 /* Tia Clara — tokens CSS (espelho de tokens.json). Importar antes de qualquer estilo. */
 /* Copiado de 05-design-system/tokens.css — só os caminhos das fontes foram ajustados para esta pasta. */
-@font-face { font-family: "Literata"; src: url("../assets/fontes/Literata[opsz,wght].ttf") format("truetype"); font-weight: 200 900; font-style: normal; font-display: swap; }
-@font-face { font-family: "Literata"; src: url("../assets/fontes/Literata-Italic[opsz,wght].ttf") format("truetype"); font-weight: 200 900; font-style: italic; font-display: swap; }
-@font-face { font-family: "Instrument Sans"; src: url("../assets/fontes/InstrumentSans[wdth,wght].ttf") format("truetype"); font-weight: 400 700; font-style: normal; font-display: swap; }
-@font-face { font-family: "Instrument Sans"; src: url("../assets/fontes/InstrumentSans-Italic[wdth,wght].ttf") format("truetype"); font-weight: 400 700; font-style: italic; font-display: swap; }
+/* Fontes web: WOFF2 com subconjunto (Latin básico + Latin-1 Supplement + pontuação
+   tipográfica usada/prevista no site), geradas por tia-clara/_fonte/fontes-web.py a partir
+   das origens em 05-design-system/fontes — ver 10-site/README.md para o detalhe do que
+   mudou. Eixos variáveis restritos ao que o CSS deste arquivo realmente usa:
+   - Literata normal: peso 400–600 (títulos usam 600, corpo de depoimento usa 400);
+     `opsz` continua livre (7–72) porque o navegador o ajusta sozinho por tamanho
+     (font-optical-sizing: auto, o padrão do CSS) do afeto pequeno ao display grande.
+   - Literata itálico: só é usado em --tc-afeto, sempre no peso 400 — peso fixo, `opsz`
+     continua livre pelo mesmo motivo acima.
+   - Instrument Sans: peso 400–700, todo ele usado (corpo, dado, rótulo, botão, números
+     do passo); `wdth` fixado em 100 (largura normal) porque nada no site usa font-stretch
+     nem `font-variation-settings` com 'wdth'.
+   - Instrument Sans itálico não é carregado: nenhum elemento do site pede itálico nesta
+     família (o único itálico do site é a voz, em Literata). */
+@font-face { font-family: "Literata"; src: url("../assets/fontes/Literata[opsz,wght].woff2") format("woff2"); font-weight: 400 600; font-style: normal; font-display: swap; unicode-range: U+0020-007E, U+00A0-00FF, U+2013-2014, U+2018-2019, U+201C-201D, U+2022, U+2026; }
+@font-face { font-family: "Literata"; src: url("../assets/fontes/Literata-Italic[opsz].woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; unicode-range: U+0020-007E, U+00A0-00FF, U+2013-2014, U+2018-2019, U+201C-201D, U+2022, U+2026; }
+@font-face { font-family: "Instrument Sans"; src: url("../assets/fontes/InstrumentSans[wght].woff2") format("woff2"); font-weight: 400 700; font-style: normal; font-display: swap; unicode-range: U+0020-007E, U+00A0-00FF, U+2013-2014, U+2018-2019, U+201C-201D, U+2022, U+2026; }
 /* Alternativa web: Google Fonts
    https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&display=swap */
 
