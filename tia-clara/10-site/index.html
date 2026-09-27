@@ -3,17 +3,25 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Tia Clara — Pet Sitter &amp; Dog Walker</title>
-<meta name="description" content="Pet sitting em domicílio e passeios com protocolo: chaves codificadas, ficha do pet e relatório de cada visita. Sempre a mesma pessoa cuidando do seu pet.">
+<title>Tia Clara — Pet Sitter &amp; Dog Walker em [BAIRRO]</title>
+<meta name="description" content="Pet sitting em domicílio (cães e gatos) e passeios com cães em [BAIRRO], [CIDADE]. Relatório de cada visita, sempre a mesma cuidadora.">
 <meta name="theme-color" content="#1E3B33">
-<link rel="canonical" href="https://example.org/">
+<link rel="canonical" href="https://[DOMINIO]/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Tia Clara — Pet Sitter & Dog Walker">
 <meta property="og:title" content="Tia Clara — Pet Sitter & Dog Walker">
 <meta property="og:description" content="Visitas na sua casa e passeios com protocolo, relatório de cada visita e sempre a mesma pessoa cuidando do seu pet.">
-<meta property="og:image" content="assets/og-capa.png">
+<meta property="og:url" content="https://[DOMINIO]/">
+<meta property="og:image" content="https://[DOMINIO]/assets/og-capa.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:alt" content="Tia Clara — Pet Sitter &amp; Dog Walker. Pode deixar comigo.">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Tia Clara — Pet Sitter &amp; Dog Walker">
+<meta name="twitter:description" content="Visitas na sua casa e passeios com protocolo, relatório de cada visita e sempre a mesma pessoa cuidando do seu pet.">
+<meta name="twitter:image" content="https://[DOMINIO]/assets/og-capa.png">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="favicon.ico" sizes="32x32">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -23,12 +31,28 @@
 {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "name": "Tia Clara — Pet Sitter & Dog Walker",
-  "description": "Pet sitting em domicílio (cães e gatos) e passeios (cães), com protocolo, relatório de cada visita e sempre a mesma cuidadora.",
-  "areaServed": "Bairro e cidade — a confirmar",
-  "telephone": "+55 XX XXXXX-XXXX — a confirmar",
-  "priceRange": "A confirmar",
-  "knowsAbout": ["Pet sitting", "Dog walking", "Cuidado de gatos em domicílio"]
+  "@id": "https://[DOMINIO]/#negocio",
+  "name": "Tia Clara Pet Sitter & Dog Walker",
+  "url": "https://[DOMINIO]/",
+  "description": "Pet sitting em domicílio (cães e gatos) e passeios com cães (dog walking), com protocolo, relatório de cada visita e sempre a mesma cuidadora.",
+  "image": "https://[DOMINIO]/assets/og-capa.png",
+  "logo": "https://[DOMINIO]/assets/logo/tc-simbolo-512px.png",
+  "telephone": "[TELEFONE]",
+  "priceRange": "[FAIXA_DE_PRECO]",
+  "areaServed": [
+    { "@type": "City", "name": "[CIDADE]" },
+    { "@type": "Place", "name": "[BAIRRO]" }
+  ],
+  "knowsAbout": ["Pet sitting", "Dog walking", "Cuidado de gatos em domicílio"],
+  "founder": { "@type": "Person", "name": "Clara", "jobTitle": "Pet sitter & dog walker" },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Serviços Tia Clara",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Pet sitting em domicílio", "serviceType": "Pet sitting em domicílio (cães e gatos)", "provider": { "@id": "https://[DOMINIO]/#negocio" } } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Passeios com cães", "serviceType": "Dog walking", "provider": { "@id": "https://[DOMINIO]/#negocio" } } }
+    ]
+  }
 }
 </script>
 </head>
@@ -56,7 +80,7 @@
       </ul>
     </nav>
 
-    <a class="tc-botao tc-botao--acao tc-cabecalho__cta" href="https://wa.me/55XXXXXXXXXXX?text=Ol%C3%A1%2C%20Tia%20Clara!%20Quero%20agendar%20uma%20visita%20de%20apresenta%C3%A7%C3%A3o.">Agendar apresentação</a>
+    <a class="tc-botao tc-botao--acao tc-cabecalho__cta" href="https://wa.me/55XXXXXXXXXXX?text=Ol%C3%A1%2C%20Tia%20Clara!%20Quero%20agendar%20uma%20visita%20de%20apresenta%C3%A7%C3%A3o.">Agendar visita</a>
   </div>
   <script>document.documentElement.classList.add('tc-js');</script>
 </header>
@@ -105,7 +129,7 @@
 
         <div class="tc-cartao-relatorio tc-hero__cartao">
           <div class="tc-cartao-relatorio__topo">
-            <span class="tc-rotulo">Relatório · Thor</span>
+            <span class="tc-rotulo">Relatório · Thor (exemplo)</span>
             <img src="assets/logo/tc-simbolo.svg" alt="" width="22" height="24" class="tc-cartao-relatorio__simbolo">
           </div>
           <ul class="tc-registros">
@@ -142,14 +166,14 @@
           <svg class="tc-ic tc-servico__icone" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5 12 5l8 7.5"/><path d="M6.5 11v8a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-8"/></svg>
           <h3 class="tc-titulo-3">Pet sitting em domicílio</h3>
           <p class="tc-servico__sub">Cães e gatos, no território deles.</p>
-          <p>O pet fica no território dele, do jeito dele: rotina, comida e cheiro de sempre. Eu visito a casa de vocês, sigo a ficha do pet e registro cada visita.</p>
+          <p>O pet fica no território dele, do jeito dele: rotina, comida e cheiro de sempre. Eu visito a sua casa, sigo a ficha do pet e registro cada visita.</p>
           <ul class="tc-lista-argola">
-            <li>Visitas diárias, no horário combinado</li>
+            <li>Visitas na frequência e no horário combinados</li>
             <li>Alimentação e água na rotina dele</li>
             <li>Medicação prescrita pelo veterinário de vocês, se houver</li>
             <li>Relatório com foto ao final de cada visita</li>
           </ul>
-          <p class="tc-marcador" data-marcador="preco-pet-sitting"><span class="tc-marcador__etiqueta">a confirmar</span><span class="tc-marcador__texto">investimento por visita</span></p>
+          <p class="tc-marcador" data-marcador="preco-pet-sitting"><span class="tc-marcador__etiqueta">a confirmar</span><span class="tc-marcador__texto">valor da visita</span></p>
         </article>
 
         <div class="tc-servicos__filete" aria-hidden="true"></div>
@@ -165,7 +189,7 @@
             <li>Água e patas limpas na volta</li>
             <li>Relatório com foto ao final do passeio</li>
           </ul>
-          <p class="tc-marcador" data-marcador="preco-passeio"><span class="tc-marcador__etiqueta">a confirmar</span><span class="tc-marcador__texto">investimento por passeio</span></p>
+          <p class="tc-marcador" data-marcador="preco-passeio"><span class="tc-marcador__etiqueta">a confirmar</span><span class="tc-marcador__texto">valor do passeio</span></p>
         </article>
       </div>
     </div>
@@ -181,7 +205,7 @@
         <li class="tc-passo">
           <span class="tc-passo__numero tc-dado" aria-hidden="true">1</span>
           <h3 class="tc-titulo-3">Visita de apresentação</h3>
-          <p>Antes de cuidar do seu pet, eu preciso conhecer a rotina dele — e conhecer a casa de vocês.</p>
+          <p>Antes de cuidar do seu pet, eu preciso conhecer a rotina dele — e conhecer a sua casa.</p>
         </li>
         <li class="tc-passo">
           <span class="tc-passo__numero tc-dado" aria-hidden="true">2</span>
@@ -324,7 +348,7 @@
       <div class="tc-avaliacoes__intro">
         <p class="tc-etiqueta tc-rotulo">Avaliações</p>
         <h2 class="tc-titulo-1" id="avaliacoes-titulo">O que os tutores dizem.</h2>
-        <p>Esta seção vai reunir avaliações reais assim que os primeiros relatórios virarem histórico. Por enquanto, os espaços abaixo são marcadores — nada aqui foi escrito por um tutor de verdade.</p>
+        <p>As primeiras avaliações chegam assim que os primeiros tutores contarem a experiência.</p>
 
         <div class="tc-estatistica tc-marcador tc-marcador--bloco" data-marcador="estatistica-83">
           <p class="tc-marcador__etiqueta">Não confirmado</p>
@@ -359,7 +383,7 @@
       <div class="tc-faq__lista">
         <details class="tc-faq">
           <summary>
-            <span class="tc-titulo-3 tc-faq__pergunta">Como funciona a entrega da minha chave?</span>
+            <h3 class="tc-titulo-3 tc-faq__pergunta">Como funciona a entrega da minha chave?</h3>
             <svg class="tc-faq__seta" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
           </summary>
           <p>Sua chave nunca sai com o seu endereço. Ela fica em um chaveiro com código (por exemplo, TC·014), a entrega e a devolução são registradas a cada visita, e a guarda é sempre segura.</p>
@@ -367,7 +391,7 @@
 
         <details class="tc-faq">
           <summary>
-            <span class="tc-titulo-3 tc-faq__pergunta">E se acontecer algo com o meu pet?</span>
+            <h3 class="tc-titulo-3 tc-faq__pergunta">E se acontecer algo com o meu pet?</h3>
             <svg class="tc-faq__seta" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
           </summary>
           <p>Antes da primeira visita, você assina uma autorização e registra o veterinário de referência de vocês. Se algo sair do previsto, você é o primeiro a saber, por telefone — o relatório não substitui essa ligação.</p>
@@ -375,7 +399,15 @@
 
         <details class="tc-faq">
           <summary>
-            <span class="tc-titulo-3 tc-faq__pergunta">Vocês cuidam de gatos também?</span>
+            <h3 class="tc-titulo-3 tc-faq__pergunta">Por que não um hotelzinho?</h3>
+            <svg class="tc-faq__seta" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </summary>
+          <p>Em casa, ele continua no território dele: sem troca de ambiente e sem animais estranhos por perto. A rotina não muda — só ganha companhia.</p>
+        </details>
+
+        <details class="tc-faq">
+          <summary>
+            <h3 class="tc-titulo-3 tc-faq__pergunta">Vocês cuidam de gatos também?</h3>
             <svg class="tc-faq__seta" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
           </summary>
           <p>Sim. O pet sitting em domicílio atende cães e gatos — o gato fica no território dele, sem o estresse de um deslocamento. O passeio, por ora, é só para cães.</p>
@@ -383,7 +415,7 @@
 
         <details class="tc-faq">
           <summary>
-            <span class="tc-titulo-3 tc-faq__pergunta">Meu pet toma medicação. Isso muda alguma coisa?</span>
+            <h3 class="tc-titulo-3 tc-faq__pergunta">Meu pet toma medicação. Isso muda alguma coisa?</h3>
             <svg class="tc-faq__seta" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
           </summary>
           <p>Fica registrado na ficha do pet, com horário e dose. Administro a medicação prescrita pelo veterinário de vocês, e o horário entra na linha de registro do relatório, como qualquer outro cuidado da visita.</p>
@@ -391,7 +423,7 @@
 
         <details class="tc-faq">
           <summary>
-            <span class="tc-titulo-3 tc-faq__pergunta">O passeio é individual ou em grupo?</span>
+            <h3 class="tc-titulo-3 tc-faq__pergunta">O passeio é individual ou em grupo?</h3>
             <svg class="tc-faq__seta" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
           </summary>
           <p>O padrão é individual. Grupos pequenos podem ser combinados caso a caso, conforme o temperamento de cada cão — converse com a Clara na visita de apresentação.</p>
@@ -399,7 +431,7 @@
 
         <details class="tc-faq">
           <summary>
-            <span class="tc-titulo-3 tc-faq__pergunta">Como recebo notícias durante a visita?</span>
+            <h3 class="tc-titulo-3 tc-faq__pergunta">Como recebo notícias durante a visita?</h3>
             <svg class="tc-faq__seta" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
           </summary>
           <p>Pelo relatório, enviado pelo WhatsApp assim que a visita ou o passeio termina: horário de entrada e saída, o que foi feito, uma foto e uma observação, sempre fechando com "Tudo certo por aqui."</p>
@@ -417,9 +449,9 @@
         <p>Tudo em ordem enquanto você não está. Conte a rotina do seu pet e marque a visita de apresentação.</p>
       </div>
       <div class="tc-cta__acao">
-        <a class="tc-botao tc-botao--acao tc-botao--grande" href="https://wa.me/55XXXXXXXXXXX?text=Ol%C3%A1%2C%20Tia%20Clara!%20Vi%20o%20site%20e%20quero%20saber%20mais%20sobre%20os%20servi%C3%A7os.">
+        <a class="tc-botao tc-botao--acao tc-botao--grande" href="https://wa.me/55XXXXXXXXXXX?text=Ol%C3%A1%2C%20Tia%20Clara!%20Vi%20o%20site%20e%20quero%20agendar%20uma%20visita%20de%20apresenta%C3%A7%C3%A3o.">
           <svg class="tc-ic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 4.5h3l1.5 4-2 1.5a11 11 0 0 0 5 5l1.5-2 4 1.5v3a1.5 1.5 0 0 1-1.6 1.5A16 16 0 0 1 5 5.1 1.5 1.5 0 0 1 6.5 4.5Z"/></svg>
-          Chamar no WhatsApp
+          Agendar visita de apresentação
         </a>
         <p class="tc-marcador" data-marcador="whatsapp-numero"><span class="tc-marcador__etiqueta">a confirmar</span><span class="tc-marcador__texto">número do WhatsApp</span></p>
       </div>
@@ -435,6 +467,7 @@
 
       <div class="tc-rodape__contatos">
         <p class="tc-marcador tc-marcador--pinho" data-marcador="telefone"><span class="tc-marcador__etiqueta">a confirmar</span><span class="tc-marcador__texto">telefone / WhatsApp</span></p>
+        <p class="tc-marcador tc-marcador--pinho" data-marcador="area-atendimento"><span class="tc-marcador__etiqueta">a confirmar</span><span class="tc-marcador__texto">área de atendimento: bairros e cidade</span></p>
         <p class="tc-marcador tc-marcador--pinho" data-marcador="instagram"><span class="tc-marcador__etiqueta">a confirmar</span><span class="tc-marcador__texto">@ do Instagram</span></p>
       </div>
 

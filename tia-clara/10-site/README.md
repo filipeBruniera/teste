@@ -25,9 +25,23 @@ Antes de publicar de verdade, resolva a lista de marcadores abaixo — todos vê
 | `depoimento-1`, `depoimento-2`, `depoimento-3` | Avaliações | Depoimentos reais, com autorização do tutor — os textos atuais são só placeholders explícitos, não citações reais |
 | `whatsapp-numero` | CTA final | Número de WhatsApp visível junto ao botão |
 | `telefone` | Rodapé | Telefone/WhatsApp para contato |
+| `area-atendimento` | Rodapé | Bairros e cidade atendidos (área, nunca endereço), iguais aos do Perfil de Empresa no Google |
 | `instagram` | Rodapé | @ do Instagram |
 
-Além dos marcadores visíveis, os três links `https://wa.me/55XXXXXXXXXXX` (cabeçalho, herói e CTA final) usam um número de exemplo óbvio (puro `X`) — troque pelo número real nos três lugares (buscar por `wa.me/55XXXXXXXXXXX`) antes de publicar. O JSON-LD (`<script type="application/ld+json">` no `<head>`) também tem `telephone` e `areaServed` com o mesmo tipo de placeholder — ajuste junto. O campo `sameAs` (link do Instagram) foi propositalmente **omitido** do JSON-LD até haver um `@` real: uma URL com aparência válida mas com "USUARIO_A_CONFIRMAR" no lugar do usuário pode ser seguida por rastreadores; adicione `"sameAs": ["https://instagram.com/SEU_USUARIO"]` de volta quando o Instagram estiver confirmado.
+Além dos marcadores visíveis, há marcadores **de código** que precisam ser trocados antes de publicar:
+
+| Marcador | Onde | O que vai no lugar |
+|---|---|---|
+| `55XXXXXXXXXXX` | os três links `wa.me` (cabeçalho, herói, CTA final) | número real do WhatsApp, com DDI e DDD |
+| `[DOMINIO]` | `canonical`, `og:url`, `og:image`, `twitter:image`, JSON-LD, `robots.txt`, `sitemap.xml` | domínio do site, sem barra final (ex.: `tiaclara.com.br`) |
+| `[BAIRRO]`, `[CIDADE]` | `<title>`, meta description, JSON-LD `areaServed` | bairro principal e cidade |
+| `[TELEFONE]` | JSON-LD `telephone` | telefone no formato `+55 11 91234-5678` |
+| `[FAIXA_DE_PRECO]` | JSON-LD `priceRange` | faixa de preço (ex.: `R$ 60–120`) ou remova a chave |
+| `[DATA_DE_PUBLICACAO]` | `sitemap.xml` | data de publicação, `AAAA-MM-DD` |
+
+Para conferir que não sobrou nenhum: `grep -rnE "\[[A-Z_]+\]|55X{5,}" tia-clara/10-site --include=*.html --include=*.txt --include=*.xml` não pode retornar nada. O JSON-LD não tem `sameAs` (Instagram) de propósito, até haver um @ real: adicione `"sameAs": ["https://instagram.com/SEU_USUARIO"]` quando existir. Não adicione `aggregateRating` nem `review` enquanto os depoimentos forem marcadores.
+
+A lista completa do que falta para publicar, incluindo as promessas a confirmar com a Clara, está em [`../11-lancamento/checklist-pre-lancamento.md`](../11-lancamento/checklist-pre-lancamento.md).
 
 Nenhum preço, telefone, @ de Instagram, nome de cliente, depoimento ou estatística foi inventado como se fosse real: tudo isso está marcado.
 
@@ -43,7 +57,7 @@ A `01-estrategia/estrategia.md` marca alguns protocolos e diferenciais como hip�
 
 ```
 10-site/
-  index.html          um h1, uma seção por bloco do briefing, JSON-LD LocalBusiness
+  index.html          um h1, uma seção por bloco do briefing, JSON-LD LocalBusiness (área de atendimento, sem endereço)
   css/tokens.css       cópia de 05-design-system/tokens.css (só caminho das fontes mudou)
   css/site.css         estilos do site, só com var(--tc-…)
   js/site.js           opcional: sincroniza aria-expanded do menu, Esc fecha, funciona sem JS
@@ -51,6 +65,7 @@ A `01-estrategia/estrategia.md` marca alguns protocolos e diferenciais como hip�
   assets/fontes/…       Literata e Instrument Sans (OFL) — WOFF2 com subconjunto, ver "Fontes" abaixo
   assets/og-capa.png    imagem de compartilhamento (Open Graph), gerada no estilo das peças de autoridade — não é fotografia, é tipografia da marca
   favicon.svg / favicon.ico / apple-touch-icon.png
+  robots.txt / sitemap.xml   com o marcador [DOMINIO]
 ```
 
 ## Fontes

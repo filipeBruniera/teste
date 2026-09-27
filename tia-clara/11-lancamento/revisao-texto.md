@@ -105,4 +105,18 @@ Os marcadores seguem um padrão visual consistente (`data-marcador` + etiqueta "
 
 ## Aplicado nesta branch
 
-_Preenchido depois da aplicação das correções._
+| Achado | Situação |
+|---|---|
+| 1. Número do WhatsApp | **Pendente**: depende do número real (checklist, bloqueador) |
+| 2. Nota de produção em Avaliações | **Aplicado**: nova frase de introdução. Os 3 cartões continuam como marcadores visíveis (pedido do spec); o checklist manda tirá-los se não houver depoimento real na publicação |
+| 3. Rótulo "Não confirmado" dos 83% | **Pendente**: o marcador continua visível; o checklist manda confirmar a fonte ou tirar o bloco |
+| 4. "A confirmar" dentro do JSON-LD | **Aplicado**: o JSON-LD foi refeito com marcadores de código (`[TELEFONE]`, `[FAIXA_DE_PRECO]`…) que o checklist obriga a trocar antes de publicar |
+| 5. CTA final | **Aplicado**: "Agendar visita de apresentação" e a mensagem de agendamento |
+| 6. Cartão do hero | **Aplicado**: "Relatório · Thor (exemplo)" |
+| 7. "de vocês" / "sua" | **Aplicado** em "conhecer a sua casa" e "Eu visito a sua casa". "Veterinário de vocês" ficou, porque é a frase do banco de frases |
+| 8. Objeção "hotelzinho" | **Aplicado**: nova pergunta no FAQ, "Por que não um hotelzinho?" |
+| 9. Objeção "calor" | **Pendente**: só entra depois que a Clara confirmar a prática |
+| 10. CTA do cabeçalho | **Aplicado**: "Agendar visita" |
+| 11. "Visitas diárias" | **Aplicado**: "Visitas na frequência e no horário combinados" |
+| 12. "investimento" | **Aplicado**: "valor da visita" / "valor do passeio" |
+| Promessas classe (b) | **Pendente**: lista de confirmação com a Clara em [`checklist-pre-lancamento.md`](checklist-pre-lancamento.md) |

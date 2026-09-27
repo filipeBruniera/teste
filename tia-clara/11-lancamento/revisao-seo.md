@@ -76,4 +76,15 @@ Site de uma página só, sem área privada: `Allow: /` e a indicação do sitema
 
 ## Aplicado nesta branch
 
-_Preenchido depois da aplicação das correções._
+| Item | Situação |
+|---|---|
+| Title e meta description com `[BAIRRO]` / `[CIDADE]` | **Aplicado** |
+| Canonical `https://[DOMINIO]/` | **Aplicado** (marcador; bloqueador no checklist) |
+| `og:url`, `og:image` absoluto, dimensões, `og:image:alt`, tags `twitter:` | **Aplicado** |
+| JSON-LD com `@id`, `url`, `logo`, `image`, `areaServed` estruturado, `founder` e `hasOfferCatalog` | **Aplicado**. `tc-simbolo-512px.png` copiado para `10-site/assets/logo/`. O nome ficou sem travessão, seguindo a recomendação de consistência de NAP |
+| `robots.txt` e `sitemap.xml` | **Aplicado**, com os marcadores `[DOMINIO]` e `[DATA_DE_PUBLICACAO]` |
+| Perguntas do FAQ como `<h3>` | **Aplicado** nas 7 perguntas (incluindo a nova, do hotelzinho) |
+| Área de atendimento no rodapé | **Aplicado**: marcador `area-atendimento` |
+| Bairro nos subtítulos de Serviços | **Não aplicado**. O bairro já aparece no title, na description, no rótulo do hero, no rodapé e no JSON-LD; nos subtítulos, os textos propostos ("passeadora de cães de [BAIRRO]") pesavam o tom da marca |
+| `FAQPage` | **Não aplicado** (prioridade baixa, sem rich result) |
+| `404.html` | **Não aplicado** (opcional; o host tem a sua) |
