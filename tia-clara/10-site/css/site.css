@@ -51,6 +51,10 @@ a, button, summary, input, [role="button"] { min-height: 24px; }
 .tc-pular:focus { top: var(--tc-e4); }
 
 /* ---------- 2. Layout -------------------------------------------------- */
+/* 1264 = 1200 (área de conteúdo, o "máx. 1200" da grade da spec) + 2 × 32
+   (margem lateral --tc-e6 em telas ≥768px). O conteúdo nunca passa de 1200px;
+   os 64px extras são só o respiro da margem, contados dentro do max-width
+   para simplificar o cálculo do padding-inline abaixo. */
 .tc-envolucro {
   width: 100%;
   max-width: 1264px;
@@ -89,6 +93,11 @@ a, button, summary, input, [role="button"] { min-height: 24px; }
 
 .tc-etiqueta { color: var(--tc-argila); display: block; }
 .tc-etiqueta--latao { color: var(--tc-latao); }
+/* Argila sobre Sálvia só passa AA em texto grande (4,2:1 — ver design-system.md);
+   o rótulo é texto pequeno, então a seção "Relatório" (fundo Sálvia) usa Musgo
+   (4,8:1), a mesma escolha documentada no README. Decisão consciente, não acidente
+   de cascata — ver iteração 002 do gan-harness. */
+.tc-secao--salvia .tc-etiqueta { color: var(--tc-musgo); }
 
 .tc-afeto {
   font: var(--tc-afeto);
@@ -98,9 +107,9 @@ a, button, summary, input, [role="button"] { min-height: 24px; }
 
 .tc-secao p:not([class]) ,
 .tc-hero__lead,
-.tc-servico > p,
-.tc-relatorio__intro > p,
-.tc-avaliacoes__intro > p,
+.tc-servico > p:not([class]),
+.tc-relatorio__intro > p:not([class]),
+.tc-avaliacoes__intro > p:not([class]),
 .tc-faq p {
   color: var(--tc-texto-secundario);
   max-width: var(--tc-medida-max);
@@ -208,13 +217,18 @@ strong { color: var(--tc-texto); font-weight: 600; }
   position: relative;
   background: var(--tc-salvia) repeating-linear-gradient(135deg, transparent 0 22px, rgb(30 59 51 / 0.07) 22px 24px);
   display: flex;
-  align-items: flex-end;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   padding: var(--tc-e5);
 }
+/* legenda centralizada na forma-plaquinha (como no modelo aprovado) — nunca no
+   rodapé: em telas ≥860px o cartão de relatório sobe por cima da base da foto
+   (ver .tc-hero__cartao), então a legenda precisa sobrar longe dessa borda. */
 .tc-foto__legenda {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: var(--tc-e2);
   font: var(--tc-rotulo);
   letter-spacing: var(--tc-rotulo-tracking);
@@ -239,11 +253,28 @@ strong { color: var(--tc-texto); font-weight: 600; }
 
 /* ---------- 8. Cabeçalho -------------------------------------------------- */
 .tc-cabecalho {
+  position: relative;
+  z-index: 20;
   background: var(--tc-papel);
   border-bottom: 1px solid var(--tc-borda);
 }
 @media (min-width: 860px) {
   .tc-cabecalho { position: sticky; top: 0; z-index: 40; }
+}
+
+/* véu atrás do painel do menu mobile: reforça a hierarquia (o painel flutuante
+   não fica "pairando" sobre o texto do herói sem nenhum tratamento de fundo).
+   Some por padrão (atributo `hidden`, nativo — sem JS ele nunca aparece, o que
+   é correto: sem JS a lista de navegação já fica sempre visível, não há painel
+   flutuante para destacar). Com JS, `site.js` alterna o atributo junto do menu. */
+.tc-menu__veu {
+  position: fixed;
+  inset: 0;
+  background: rgb(30 59 51 / 0.45);
+  z-index: 10;
+}
+@media (min-width: 860px) {
+  .tc-menu__veu { display: none; }
 }
 .tc-cabecalho__linha {
   display: flex;
@@ -385,8 +416,15 @@ html.tc-js .tc-menu[data-aberto="true"] .tc-menu__lista { display: flex; }
 .tc-hero__cartao { margin: calc(var(--tc-e7) * -1) auto 0; max-width: 320px; position: relative; z-index: 1; }
 
 @media (min-width: 860px) {
-  .tc-hero__grade { grid-template-columns: 1.15fr 1fr; align-items: start; }
-  .tc-hero__foto { width: 100%; margin-inline: 0 0 0 auto; }
+  /* align-items: center distribui a diferença de altura entre as duas colunas
+     nas duas pontas (em vez de deixar um vazio só embaixo da coluna de texto,
+     mais curta) — a coluna da foto/cartão, mais alta, não muda de lugar; só a
+     de texto centraliza dentro da faixa que ela já ocupa. */
+  .tc-hero__grade { grid-template-columns: 1.15fr 1fr; align-items: center; }
+  /* largura igual à do modelo aprovado (470px) em vez de esticar até a borda
+     da coluna — deixa a composição mais próxima da referência e reduz a altura
+     total da coluna visual. */
+  .tc-hero__foto { width: min(470px, 100%); margin-inline: 0 0 0 auto; }
   .tc-hero__cartao { margin: calc(var(--tc-e9) * -1) 0 0 0; }
 }
 
@@ -549,10 +587,21 @@ html.tc-js .tc-menu[data-aberto="true"] .tc-menu__lista { display: flex; }
 }
 
 /* ---------- 15. FAQ ------------------------------------------------------------------ */
-.tc-faq__envolucro > .tc-faq__lista { max-width: 780px; }
-.tc-faq__lista { margin-top: var(--tc-e7); display: grid; }
+.tc-faq__lista { margin-top: var(--tc-e7); }
 .tc-faq { border-top: 1px solid var(--tc-borda); }
 .tc-faq:last-child { border-bottom: 1px solid var(--tc-borda); }
+
+/* em telas largas, duas colunas de perguntas (3 + 3) em vez de uma coluna
+   presa a ~780px com quase metade do envelope em branco decorativo — usa o
+   mesmo componente-acordeão, só reflui o layout. */
+@media (min-width: 900px) {
+  .tc-faq__lista {
+    column-count: 2;
+    column-gap: var(--tc-e8);
+    border-bottom: 1px solid var(--tc-borda);
+  }
+  .tc-faq { break-inside: avoid; border-bottom: 0; }
+}
 .tc-faq summary {
   display: flex;
   align-items: center;

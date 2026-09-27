@@ -1,49 +1,36 @@
-# Generator State — Iteração 001
+# Generator State — Iteração 002
 
-## O que foi construído
+## O que foi corrigido (item a item do feedback-001.md)
 
-Landing page one-page completa da Tia Clara em `tia-clara/10-site/`, HTML+CSS estático (JS vanilla mínimo e opcional), autocontida e sem build, seguindo à risca `tokens.css`/`design-system.md`.
+### Critical
+1. **Badge "FOTO A CONFIRMAR" cortado pelo cartão de relatório (≥860px)** — `.tc-foto` passou de `align-items: flex-end` para `align-items: center; justify-content: center; text-align: center` (igual ao modelo aprovado, que centraliza o texto na forma-plaquinha em vez de ancorá-lo no rodapé). A legenda agora fica bem acima da faixa onde `.tc-hero__cartao` sobrepõe a foto, em qualquer largura ≥860px. Mesma correção beneficia a foto do relatório (`#relatorio`), que usa o mesmo componente `.tc-foto`.
 
-Arquivos criados:
-- `tia-clara/10-site/index.html` — as 10 seções do briefing na ordem pedida, `lang="pt-BR"`, um único `h1`, landmarks, link "Pular para o conteúdo", JSON-LD `LocalBusiness`.
-- `tia-clara/10-site/css/tokens.css` — cópia fiel de `05-design-system/tokens.css`, só com os caminhos das fontes ajustados para `../assets/fontes/…`.
-- `tia-clara/10-site/css/site.css` — todo o estilo do site, só com `var(--tc-…)`; zero cor/fonte/raio/sombra fora dos tokens.
-- `tia-clara/10-site/js/site.js` — opcional: liga o botão do menu do cabeçalho (mostra/esconde, Esc fecha, fecha ao clicar num link). Sem JS, a navegação continua visível e funcional (lista empilhada abaixo do cabeçalho) — testado com JS desligado.
-- `tia-clara/10-site/assets/logo/*.svg` — assinatura horizontal compacta, versão "sobre-pinho" (rodapé), símbolo (Pinho e Latão), ícone do app, copiados de `04-logo/master`.
-- `tia-clara/10-site/assets/fontes/*` — Literata e Instrument Sans + licenças OFL, copiadas de `05-design-system/fontes`.
-- `tia-clara/10-site/assets/og-capa.png` — imagem de Open Graph gerada no estilo das peças de autoridade da marca (Pinho + Literata + filete de latão), não é fotografia.
-- `favicon.svg` (símbolo, vetorial), `favicon.ico` e `apple-touch-icon.png` — gerados a partir de `04-logo/master/tc-app-icon.svg` via Playwright (renderização + montagem manual do contêiner ICO), já que não havia rsvg-convert/ImageMagick disponíveis.
-- `tia-clara/10-site/README.md` — como publicar (GitHub Pages/Netlify/local) e a lista completa dos 12 marcadores `data-marcador`, dos 3 links `wa.me/55XXXXXXXXXXX` e dos campos placeholder do JSON-LD, mais a lista de hipóteses ⚑ da estratégia usadas no texto.
+### Major
+1. **Vazio de ~40% no FAQ em 1440px** — troquei a lista de perguntas de "uma coluna presa a 780px" para duas colunas (`column-count: 2` a partir de 900px, com `break-inside: avoid` em cada `<details>`), reaproveitando o próprio componente-acordeão em vez de esticar a largura ou inventar um bloco de preenchimento. `border-bottom` do envelope movido para o container da lista, para fechar as duas colunas com uma linha só.
+2. **Bug de especificidade deixando rótulos/subtítulos com cor errada** — adicionei `:not([class])` a `.tc-servico > p`, `.tc-relatorio__intro > p` e `.tc-avaliacoes__intro > p`, para que esse seletor genérico de "parágrafo de corpo" pare de vazar para elementos com classe própria (`.tc-etiqueta`, `.tc-servico__sub`). Isso corrigiu **três** ocorrências, não só as duas que o avaliador tinha achado: "A peça-assinatura" e "Avaliações" (rótulos) **e também** os subtítulos "Cães e gatos, no território deles." / "Só cães, um passeio de verdade." em Serviços, que também estavam pegando a cor errada (e um `margin-top` maior do que o `.tc-servico__sub` pedia) pelo mesmo motivo — confirmei visualmente depois do fix, os três agora renderizam com a cor certa.
+   Como a etiqueta "A peça-assinatura" volta a usar a regra base `.tc-etiqueta { color: var(--tc-argila) }` depois do fix, e essa seção tem fundo Sálvia (onde Argila só passa AA em texto grande — 4,15:1, documentado no design-system.md), adicionei uma regra consciente `.tc-secao--salvia .tc-etiqueta { color: var(--tc-musgo) }` (4,8:1, passa) em vez de deixar a etiqueta reproduzir a falha de contraste que o bug de cascata tinha mascarado por acidente. Documentei a decisão no README.
+3. **README descrevendo um menu `<details>/<summary>` que não existe** — reescrevi o parágrafo para descrever a implementação real (`<nav>` sempre no DOM, lista empilhada sem JS, botão hambúrguer com `aria-expanded` sincronizado via `site.js` quando há JS) e aproveitei para documentar a decisão de travar o tema claro (`data-tema="claro"`), que antes só estava no `generator-state.md`.
 
-## Decisões de composição por seção
+### Minor
+1. **Numeração inconsistente** — Protocolos foi de "01·02·03·04·05" para "1·2·3·4·5", alinhando com "Como funciona" **e** com a peça de referência `ig-01-autoridade-protocolo.png` (que usa "1 2 3" sem zero à esquerda — o zero-padding não vinha de nenhuma peça oficial).
+2. **Menu mobile sem véu atrás do painel** — adicionei `.tc-menu__veu` (`<div hidden>` logo após o `</header>`, `position:fixed; inset:0; background: rgb(30 59 51 / 0.45)`, escondido por padrão via atributo `hidden` nativo — nunca aparece sem JS, que é o comportamento certo, já que sem JS não existe painel flutuante para destacar). `site.js` alterna `hidden` junto com `data-aberto`; o listener de "clique fora fecha o menu" que já existia cobre o clique no véu sem precisar de handler novo, porque o véu não é descendente de `#tc-menu`.
+3. **`sameAs` do JSON-LD com URL de aparência real** — removido do JSON-LD até haver um `@` confirmado; README explica por quê e como adicionar de volta.
+4. **`.tc-envolucro` 1264px vs "máx. 1200" da spec** — comentário no CSS explicando a conta (1200 de conteúdo + 2×32 de margem lateral = 1264).
 
-- **Cabeçalho**: assinatura horizontal compacta + navegação por âncoras + "Agendar apresentação" (Argila), sempre ligado a um `wa.me` real. Menu do celular é um `<nav>` simples sempre no DOM: sem JS a lista fica visível e empilhada (funciona sem JavaScript); com JS (classe `tc-js` ligada por um script inline mínimo), o botão hambúrguer→X esconde/mostra a lista, sincroniza `aria-expanded`, fecha com Esc e ao clicar fora ou num link.
-- **Hero**: reconstrução fiel da primeira dobra aprovada (`site-home-desktop.html`/`celular.html`) — rótulo com argola, "Pode deixar comigo." em Literata, 2 CTAs, 3 provas com ícone, foto-plaquinha com hachura Sálvia + marcador de foto, cartão de relatório reduzido (Thor) sobreposto por baixo, único acento Argila.
-- **Serviços** (fundo Papel): dueto assimétrico com filete divisório central — pet sitting (casa) e passeios (guia) — em vez de grade de cards idênticos; preço sempre como marcador, nunca valor inventado.
-- **Como funciona** (fundo Linho): linha do tempo tipográfica com numerais grandes em Argila e traço superior, não cartões.
-- **Relatório de visita** (fundo Sálvia — "fundo de relatório" no design system): a peça-assinatura, réplica fiel de `relatorio-whatsapp.png` — faixa Pinho com rótulo em Latão, nome do pet ("Thor", mesmo exemplo das peças oficiais, identificado como "exemplo ilustrativo"), linhas de registro com ícones (chave/checagem/guia), foto-marcador, observação com filete Argila, fecho "Tudo certo por aqui." em itálico.
-- **Protocolos** (fundo Pinho, único acento Latão): lista numerada 01–05 com filetes de latão entre itens, réplica do território de `ig-01-autoridade-protocolo.png`, fecho "Pode deixar comigo." em itálico — nenhum marcador aqui (protocolos ⚑ documentados no README, não como dado pendente visível).
-- **Avaliações**: estatística de 83% como bloco-marcador "NÃO CONFIRMADO" à esquerda + três blocos-depoimento deliberadamente assimétricos (alturas e larguras diferentes, terceiro deslocado) para não parecer grade de cards repetidos — todos com `data-marcador` e texto que deixa claro que é placeholder.
-- **FAQ**: `<details>/<summary>` nativos, perguntas em Literata (voz) sobre fundo Papel, sem cartões — 6 perguntas reais das objeções da estratégia (chave, emergência, gatos, medicação, grupo, relatório).
-- **CTA WhatsApp**: painel Papel elevado sobre Linho, único acento Argila, número do WhatsApp como marcador visível ao lado do botão.
-- **Rodapé** (fundo Pinho): assinatura "sobre-pinho", marcadores de telefone/Instagram, filete de latão, uma linha de privacidade (sem fachada/endereço/geolocalização), créditos OFL.
+### Nota do orquestrador (além do feedback)
+- Subtítulo do hero: revertido de "Visitas na casa dele..." para "Visitas na sua casa..." (texto do modelo aprovado, `site-home-desktop.html`), em `index.html` e no `og:description`.
+- Colunas da primeira dobra em 1440px: `.tc-hero__grade` passou a usar `align-items: center` (em vez de `start`) a partir de 860px — a coluna de texto (mais curta) passa a ficar centralizada na faixa de altura definida pela coluna da foto/cartão (mais alta, que não se move), distribuindo o vazio nas duas pontas em vez de deixá-lo todo embaixo do texto. Também limitei `.tc-hero__foto` a `width: min(470px, 100%)` em vez de esticar até a borda da coluna — largura igual à do modelo aprovado, que também reduz a altura total da coluna visual e aproxima ainda mais o equilíbrio.
 
-## Verificação automática
+## Verificação
 
-Rodei `gan-harness/tools/avaliar.js` várias vezes durante a construção (iteração de teste `000`, apagada ao final conforme instruído) em 390/768/1024/1440px. Estado final, tudo limpo:
-- Sem rolagem horizontal em nenhuma largura; sem elementos fora da tela.
-- Contraste reprovado: 0 (claro e escuro) · cores fora da paleta: 0 · gradientes proibidos: 0 (só a hachura permitida) · sombras: 0.
-- Itálico Literata: exatamente 1 por seção onde aparece (hero, relatório, protocolos) — em nenhum outro lugar.
-- Nenhuma plaquinha em botão/campo, nenhum texto < 12px, nenhum alvo de toque abaixo do mínimo (44px no celular / 24px no resto), foco visível em todas as 22 (desktop) / 16 (celular) paradas de teclado.
-- Nenhuma palavra proibida do banco de produção; "83%" só aparece dentro de `[data-marcador]`.
-- 12 marcadores `data-marcador` presentes e listados; JSON-LD `LocalBusiness` válido; menu e FAQ funcionam (testado clique + Esc); sem JS a navegação continua acessível; sem erros de console nem requisições falhas.
-- Corrigi durante o processo: nav do cabeçalho estourando a viewport em 1024px (bug de `<details>` colapsando o layout — troquei por `<nav>` simples com progressive enhancement), modo escuro com 32 falhas de contraste (optei por travar o tema claro via `data-tema="claro"`, já que o modo escuro é "desejável, não obrigatório" e uma implementação completa exigiria auditar cada componente customizado), badge "Foto a confirmar" sendo cortado pela moldura-plaquinha, e o ícone do botão de WhatsApp renderizando em Pinho (baixo contraste) dentro do botão Argila em vez de herdar Linho.
+Rodei `gan-harness/tools/avaliar.js` na iteração de teste `000` (apagada ao final) depois de todas as correções: sem rolagem horizontal em nenhuma largura, contraste reprovado 0 (claro e escuro), cores fora da paleta 0, gradientes proibidos 0, sombras 0, itálico exatamente 1 por seção onde aparece, 12 marcadores presentes, menu e FAQ funcionam, sem erros de console. Conferi visualmente (leitura de imagem) os PNGs de cada correção: `dobra-1440.png`/`dobra-1024.png` (badge legível, colunas equilibradas), `secao-1440-07-faq.png` (duas colunas, sem vazio), `secao-1440-02-servicos.png` (subtítulos em Argila), `secao-1440-04-relatorio.png` (rótulo em Musgo sobre Sálvia), `secao-1440-06-avaliacoes.png` (rótulo em Argila sobre Linho), `secao-1440-05-protocolos.png` (numeração 1-5), `menu-aberto-390.png` (véu atrás do painel), `dobra-390.png`/`pagina-inteira-1440.png` (nada quebrou no resto da página).
 
 ## Problemas conhecidos
 
-- Modo escuro (`prefers-color-scheme: dark`) está deliberadamente neutralizado (`data-tema="claro"` fixo no `<html>`) para não arriscar falhas de contraste em componentes customizados (marcadores, cartões, cabeçalho) que usam cor primitiva (`--tc-papel`/`--tc-pinho`) em vez da semântica. Pode ser retomado numa próxima iteração se for prioridade — exigiria trocar os usos diretos de `--tc-papel`/`--tc-pinho` por `--tc-fundo-elevado`/`--tc-fundo-inverso` nos componentes e testar contraste de novo.
-- `favicon.ico`/`apple-touch-icon.png` foram gerados por script (Playwright + montagem manual do contêiner ICO), não por uma ferramenta de design; visualmente conferem com `tc-app-icon.svg`, mas vale um Ctrl+F por "gerado por script" antes de publicar se a Clara quiser trocar por arte oficial.
-- Todos os dados pendentes (bairro/cidade, telefone, Instagram, preços, fotos, depoimentos, estatística de 83%, número de WhatsApp nos 3 links `wa.me/55XXXXXXXXXXX`) e as hipóteses ⚑ da estratégia (passeio em grupo, lista de protocolos como prática já estabelecida) estão documentados em `tia-clara/10-site/README.md` — nada foi inventado como se fosse real.
+- Modo escuro continua deliberadamente neutralizado (`data-tema="claro"` fixo), pelo mesmo motivo documentado na iteração 001 — não era item do feedback-001.md corrigir isso, só documentá-lo melhor no README, o que foi feito.
+- `favicon.ico`/`apple-touch-icon.png` continuam gerados por script (não por ferramenta de design), como já documentado.
+- Todos os dados pendentes e hipóteses ⚑ seguem listados em `tia-clara/10-site/README.md`, sem nenhum dado inventado como real.
+- Não identifiquei nenhum outro "rótulo órfão" além dos três descritos acima (varredura feita lendo o CSS inteiro e conferindo visualmente cada seção com etiqueta/subtítulo depois do fix).
 
 ## Dev Server
 

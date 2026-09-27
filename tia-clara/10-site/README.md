@@ -27,7 +27,7 @@ Antes de publicar de verdade, resolva a lista de marcadores abaixo — todos vê
 | `telefone` | Rodapé | Telefone/WhatsApp para contato |
 | `instagram` | Rodapé | @ do Instagram |
 
-Além dos marcadores visíveis, os três links `https://wa.me/55XXXXXXXXXXX` (cabeçalho, herói e CTA final) usam um número de exemplo óbvio (puro `X`) — troque pelo número real nos três lugares (buscar por `wa.me/55XXXXXXXXXXX`) antes de publicar. O JSON-LD (`<script type="application/ld+json">` no `<head>`) também tem `telephone`, `areaServed` e `sameAs` com o mesmo tipo de placeholder — ajuste junto.
+Além dos marcadores visíveis, os três links `https://wa.me/55XXXXXXXXXXX` (cabeçalho, herói e CTA final) usam um número de exemplo óbvio (puro `X`) — troque pelo número real nos três lugares (buscar por `wa.me/55XXXXXXXXXXX`) antes de publicar. O JSON-LD (`<script type="application/ld+json">` no `<head>`) também tem `telephone` e `areaServed` com o mesmo tipo de placeholder — ajuste junto. O campo `sameAs` (link do Instagram) foi propositalmente **omitido** do JSON-LD até haver um `@` real: uma URL com aparência válida mas com "USUARIO_A_CONFIRMAR" no lugar do usuário pode ser seguida por rastreadores; adicione `"sameAs": ["https://instagram.com/SEU_USUARIO"]` de volta quando o Instagram estiver confirmado.
 
 Nenhum preço, telefone, @ de Instagram, nome de cliente, depoimento ou estatística foi inventado como se fosse real: tudo isso está marcado.
 
@@ -56,6 +56,7 @@ A `01-estrategia/estrategia.md` marca alguns protocolos e diferenciais como hip�
 ## Acessibilidade e responsivo
 
 - `lang="pt-BR"`, um único `h1`, hierarquia de títulos em ordem, landmarks (`header`, `nav`, `main`, `footer`), link "Pular para o conteúdo" como primeiro elemento focável.
-- Contraste: só usa os pares aprovados no design system (ex. Argila sobre Papel/Linho, nunca Argila sobre Sálvia em texto pequeno; Latão só sobre Pinho).
-- Menu do celular é um `<details>/<summary>` nativo — funciona **sem JavaScript**; o `site.js` só sincroniza `aria-expanded` e fecha com Esc.
+- Contraste: só usa os pares aprovados no design system (ex. Argila sobre Papel/Linho, nunca Argila sobre Sálvia em texto pequeno — por isso o rótulo "A peça-assinatura", que cai sobre o fundo Sálvia da seção Relatório, usa Musgo em vez de Argila; Latão só sobre Pinho).
+- Menu do celular é um `<nav>` sempre presente no DOM: **sem JavaScript**, a lista de links fica visível e empilhada logo abaixo do cabeçalho — a navegação funciona inteira sem JS. Com JavaScript, um script mínimo inline liga a classe `tc-js` ao `<html>`; ela ativa o botão hambúrguer, e o `site.js` alterna a exibição da lista (painel flutuante com um véu Pinho semitransparente atrás, para separar do conteúdo por baixo), sincroniza `aria-expanded`, fecha com Esc, ao clicar fora (inclusive no véu) e ao clicar num link.
+- Modo escuro fica travado no claro: `data-tema="claro"` no `<html>` neutraliza `prefers-color-scheme: dark` de propósito. É uma decisão consciente de escopo, não um esquecimento — ativar o modo escuro de verdade exigiria trocar os usos diretos de `--tc-papel`/`--tc-pinho` nos componentes customizados (marcadores, cartões, cabeçalho) pelas variáveis semânticas (`--tc-fundo-elevado`/`--tc-fundo-inverso`) e reauditar o contraste de cada um antes de reativar.
 - Testado sem rolagem horizontal de 390 a 1440 px. `prefers-reduced-motion` zera as transições via tokens.

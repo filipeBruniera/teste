@@ -11,15 +11,18 @@
   var botao = menu.querySelector(".tc-menu__botao");
   var lista = menu.querySelector(".tc-menu__lista");
   if (!botao || !lista) return;
+  var veu = document.querySelector(".tc-menu__veu");
 
   function fechar() {
     menu.setAttribute("data-aberto", "false");
     botao.setAttribute("aria-expanded", "false");
+    if (veu) veu.hidden = true;
   }
   function alternar() {
     var aberto = menu.getAttribute("data-aberto") === "true";
     menu.setAttribute("data-aberto", aberto ? "false" : "true");
     botao.setAttribute("aria-expanded", aberto ? "false" : "true");
+    if (veu) veu.hidden = aberto;
   }
 
   fechar();
