@@ -1,4 +1,4 @@
-# ECC 2.2.2 — commit e482e57 (2026-09-24)
+# ECC 2.2.2 — commit d3b8a3e (2026-09-27)
 # Gerado por .claude/ecc-sync.sh. Não edite à mão.
 commands/ecc
 agents/a11y-architect.md
