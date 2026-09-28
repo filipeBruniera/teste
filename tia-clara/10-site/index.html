@@ -25,6 +25,7 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="favicon.ico" sizes="32x32">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script>document.documentElement.classList.add('tc-js');</script>
 <link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/site.css">
 <script type="application/ld+json">
@@ -37,6 +38,7 @@
   "description": "Pet sitting em domicílio (cães e gatos) e passeios com cães (dog walking), com protocolo, relatório de cada visita e sempre a mesma cuidadora.",
   "image": "https://[DOMINIO]/assets/og-capa.png",
   "logo": "https://[DOMINIO]/assets/logo/tc-simbolo-512px.png",
+  "address": { "@type": "PostalAddress", "addressLocality": "[CIDADE]", "addressRegion": "[UF]", "addressCountry": "BR" },
   "telephone": "[TELEFONE]",
   "priceRange": "[FAIXA_DE_PRECO]",
   "areaServed": [
@@ -82,7 +84,6 @@
 
     <a class="tc-botao tc-botao--acao tc-cabecalho__cta" href="https://wa.me/55XXXXXXXXXXX?text=Ol%C3%A1%2C%20Tia%20Clara!%20Quero%20agendar%20uma%20visita%20de%20apresenta%C3%A7%C3%A3o.">Agendar visita</a>
   </div>
-  <script>document.documentElement.classList.add('tc-js');</script>
 </header>
 <div class="tc-menu__veu" aria-hidden="true" hidden></div>
 
@@ -381,61 +382,64 @@
       <h2 class="tc-titulo-1" id="faq-titulo">Perguntas antes de combinar.</h2>
 
       <div class="tc-faq__lista">
-        <details class="tc-faq">
-          <summary>
-            <h3 class="tc-titulo-3 tc-faq__pergunta">Como funciona a entrega da minha chave?</h3>
-            <svg class="tc-faq__seta" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-          </summary>
-          <p>Sua chave nunca sai com o seu endereço. Ela fica em um chaveiro com código (por exemplo, TC·014), a entrega e a devolução são registradas a cada visita, e a guarda é sempre segura.</p>
-        </details>
+        <div class="tc-faq__coluna">
+          <details class="tc-faq">
+            <summary>
+              <h3 class="tc-titulo-3 tc-faq__pergunta">Como funciona a entrega da minha chave?</h3>
+              <svg class="tc-faq__seta" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <p>Sua chave nunca sai com o seu endereço. Ela fica em um chaveiro com código (por exemplo, TC·014), a entrega e a devolução são registradas a cada visita, e a guarda é sempre segura.</p>
+          </details>
 
-        <details class="tc-faq">
-          <summary>
-            <h3 class="tc-titulo-3 tc-faq__pergunta">E se acontecer algo com o meu pet?</h3>
-            <svg class="tc-faq__seta" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-          </summary>
-          <p>Antes da primeira visita, você assina uma autorização e registra o veterinário de referência de vocês. Se algo sair do previsto, você é o primeiro a saber, por telefone — o relatório não substitui essa ligação.</p>
-        </details>
+          <details class="tc-faq">
+            <summary>
+              <h3 class="tc-titulo-3 tc-faq__pergunta">E se acontecer algo com o meu pet?</h3>
+              <svg class="tc-faq__seta" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <p>Antes da primeira visita, você assina uma autorização e registra o veterinário de referência de vocês. Se algo sair do previsto, você é o primeiro a saber, por telefone — o relatório não substitui essa ligação.</p>
+          </details>
 
-        <details class="tc-faq">
-          <summary>
-            <h3 class="tc-titulo-3 tc-faq__pergunta">Por que não um hotelzinho?</h3>
-            <svg class="tc-faq__seta" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-          </summary>
-          <p>Em casa, ele continua no território dele: sem troca de ambiente e sem animais estranhos por perto. A rotina não muda — só ganha companhia.</p>
-        </details>
+          <details class="tc-faq">
+            <summary>
+              <h3 class="tc-titulo-3 tc-faq__pergunta">Por que não um hotelzinho?</h3>
+              <svg class="tc-faq__seta" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <p>Em casa, ele continua no território dele: sem troca de ambiente e sem animais estranhos por perto. A rotina não muda — só ganha companhia.</p>
+          </details>
 
-        <details class="tc-faq">
-          <summary>
-            <h3 class="tc-titulo-3 tc-faq__pergunta">Vocês cuidam de gatos também?</h3>
-            <svg class="tc-faq__seta" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-          </summary>
-          <p>Sim. O pet sitting em domicílio atende cães e gatos — o gato fica no território dele, sem o estresse de um deslocamento. O passeio, por ora, é só para cães.</p>
-        </details>
+          <details class="tc-faq">
+            <summary>
+              <h3 class="tc-titulo-3 tc-faq__pergunta">Você cuida de gatos também?</h3>
+              <svg class="tc-faq__seta" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <p>Sim. O pet sitting em domicílio atende cães e gatos — o gato fica no território dele, sem o estresse de um deslocamento. O passeio, por ora, é só para cães.</p>
+          </details>
+        </div>
+        <div class="tc-faq__coluna">
+          <details class="tc-faq">
+            <summary>
+              <h3 class="tc-titulo-3 tc-faq__pergunta">Meu pet toma medicação. Isso muda alguma coisa?</h3>
+              <svg class="tc-faq__seta" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <p>Fica registrado na ficha do pet, com horário e dose. Administro a medicação prescrita pelo veterinário de vocês, e o horário entra na linha de registro do relatório, como qualquer outro cuidado da visita.</p>
+          </details>
 
-        <details class="tc-faq">
-          <summary>
-            <h3 class="tc-titulo-3 tc-faq__pergunta">Meu pet toma medicação. Isso muda alguma coisa?</h3>
-            <svg class="tc-faq__seta" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-          </summary>
-          <p>Fica registrado na ficha do pet, com horário e dose. Administro a medicação prescrita pelo veterinário de vocês, e o horário entra na linha de registro do relatório, como qualquer outro cuidado da visita.</p>
-        </details>
+          <details class="tc-faq">
+            <summary>
+              <h3 class="tc-titulo-3 tc-faq__pergunta">O passeio é individual ou em grupo?</h3>
+              <svg class="tc-faq__seta" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <p>O padrão é individual. Grupos pequenos podem ser combinados caso a caso, conforme o temperamento de cada cão — converse com a Clara na visita de apresentação.</p>
+          </details>
 
-        <details class="tc-faq">
-          <summary>
-            <h3 class="tc-titulo-3 tc-faq__pergunta">O passeio é individual ou em grupo?</h3>
-            <svg class="tc-faq__seta" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-          </summary>
-          <p>O padrão é individual. Grupos pequenos podem ser combinados caso a caso, conforme o temperamento de cada cão — converse com a Clara na visita de apresentação.</p>
-        </details>
-
-        <details class="tc-faq">
-          <summary>
-            <h3 class="tc-titulo-3 tc-faq__pergunta">Como recebo notícias durante a visita?</h3>
-            <svg class="tc-faq__seta" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-          </summary>
-          <p>Pelo relatório, enviado pelo WhatsApp assim que a visita ou o passeio termina: horário de entrada e saída, o que foi feito, uma foto e uma observação, sempre fechando com "Tudo certo por aqui."</p>
-        </details>
+          <details class="tc-faq">
+            <summary>
+              <h3 class="tc-titulo-3 tc-faq__pergunta">Como fico sabendo como foi a visita?</h3>
+              <svg class="tc-faq__seta" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <p>Pelo relatório, enviado pelo WhatsApp assim que a visita ou o passeio termina: horário de entrada e saída, o que foi feito, uma foto e uma observação, sempre fechando com "Tudo certo por aqui."</p>
+          </details>
+        </div>
       </div>
     </div>
   </section>
@@ -466,9 +470,9 @@
       <img src="assets/logo/tc-assinatura-horizontal-sobre-pinho.svg" alt="Tia Clara — Pet Sitter &amp; Dog Walker" width="180" height="64" class="tc-rodape__marca">
 
       <div class="tc-rodape__contatos">
-        <p class="tc-marcador tc-marcador--pinho" data-marcador="telefone"><span class="tc-marcador__etiqueta">a confirmar</span><span class="tc-marcador__texto">telefone / WhatsApp</span></p>
-        <p class="tc-marcador tc-marcador--pinho" data-marcador="area-atendimento"><span class="tc-marcador__etiqueta">a confirmar</span><span class="tc-marcador__texto">área de atendimento: bairros e cidade</span></p>
-        <p class="tc-marcador tc-marcador--pinho" data-marcador="instagram"><span class="tc-marcador__etiqueta">a confirmar</span><span class="tc-marcador__texto">@ do Instagram</span></p>
+        <p class="tc-marcador" data-marcador="telefone"><span class="tc-marcador__etiqueta">a confirmar</span><span class="tc-marcador__texto">telefone / WhatsApp</span></p>
+        <p class="tc-marcador" data-marcador="area-atendimento"><span class="tc-marcador__etiqueta">a confirmar</span><span class="tc-marcador__texto">área de atendimento: bairros e cidade</span></p>
+        <p class="tc-marcador" data-marcador="instagram"><span class="tc-marcador__etiqueta">a confirmar</span><span class="tc-marcador__texto">@ do Instagram</span></p>
       </div>
 
       <nav class="tc-rodape__nav" aria-label="Seções, no rodapé">
@@ -487,6 +491,6 @@
   </div>
 </footer>
 
-<script src="js/site.js"></script>
+<script src="js/site.js" onerror="document.documentElement.classList.remove('tc-js')"></script>
 </body>
 </html>

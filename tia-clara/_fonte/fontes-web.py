@@ -15,6 +15,8 @@ O que faz, por arquivo:
 Requer: pip install fonttools brotli
 Uso:    python3 tia-clara/_fonte/fontes-web.py
 """
+
+from __future__ import annotations  # anotações `dict | None` também no Python 3.8/3.9
 import os
 from fontTools.ttLib import TTFont
 from fontTools.varLib import instancer

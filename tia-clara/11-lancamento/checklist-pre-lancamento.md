@@ -6,7 +6,7 @@
 
 - [ ] **Número do WhatsApp**: trocar `55XXXXXXXXXXX` nos três links `wa.me` e preencher o marcador `whatsapp-numero`.
 - [ ] **Domínio**: trocar `[DOMINIO]` no `index.html`, no `robots.txt` e no `sitemap.xml`.
-- [ ] **Bairro(s) e cidade**: `[BAIRRO]`, `[CIDADE]` e os marcadores `bairro-cidade` e `area-atendimento`. Precisam ser os mesmos bairros no site, no Google e no Instagram.
+- [ ] **Bairro(s), cidade e estado**: `[BAIRRO]`, `[CIDADE]`, `[UF]` e os marcadores `bairro-cidade` e `area-atendimento`. Precisam ser os mesmos bairros no site, no Google e no Instagram.
 - [ ] **Telefone**: marcador `telefone` e `[TELEFONE]` no JSON-LD.
 - [ ] **Preços**: marcadores `preco-pet-sitting` e `preco-passeio`, e `[FAIXA_DE_PRECO]` no JSON-LD (ou remover a chave).
 - [ ] **Data de publicação**: `[DATA_DE_PUBLICACAO]` no `sitemap.xml`.

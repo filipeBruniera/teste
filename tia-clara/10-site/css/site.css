@@ -115,7 +115,7 @@ a, button, summary, input, [role="button"] { min-height: 24px; }
   max-width: var(--tc-medida-max);
   margin-top: var(--tc-e4);
 }
-.tc-secao--pinho p,
+.tc-secao--pinho p:not([class]),
 .tc-protocolo__texto { color: var(--tc-salvia); }
 
 strong { color: var(--tc-texto); font-weight: 600; }
@@ -210,7 +210,6 @@ strong { color: var(--tc-texto); font-weight: 600; }
   border-radius: var(--tc-raio-md);
 }
 .tc-marcador--bloco .tc-marcador__etiqueta { display: block; margin-bottom: var(--tc-e2); }
-.tc-marcador--pinho { background: var(--tc-papel); }
 
 /* ---------- 6. Marcador de foto ------------------------------------------ */
 .tc-foto {
@@ -431,7 +430,7 @@ html.tc-js .tc-menu[data-aberto="true"] .tc-menu__lista { display: flex; }
   /* largura igual à do modelo aprovado (470px) em vez de esticar até a borda
      da coluna — deixa a composição mais próxima da referência e reduz a altura
      total da coluna visual. */
-  .tc-hero__foto { width: min(470px, 100%); margin-inline: 0 0 0 auto; }
+  .tc-hero__foto { width: min(470px, 100%); margin-inline: auto 0; }
   .tc-hero__cartao { margin: calc(var(--tc-e9) * -1) 0 0 0; }
 }
 
@@ -479,7 +478,6 @@ html.tc-js .tc-menu[data-aberto="true"] .tc-menu__lista { display: flex; }
   display: grid;
   gap: var(--tc-e7);
   margin-top: var(--tc-e8);
-  counter-reset: passo;
 }
 .tc-passo { padding-top: var(--tc-e5); border-top: 1.5px solid var(--tc-borda); }
 .tc-passo__numero {
@@ -536,7 +534,7 @@ html.tc-js .tc-menu[data-aberto="true"] .tc-menu__lista { display: flex; }
   padding: var(--tc-e4) var(--tc-e5);
 }
 .tc-relatorio__observacao-rotulo { color: var(--tc-argila); margin-bottom: var(--tc-e1); }
-.tc-relatorio__observacao p { color: var(--tc-texto); }
+.tc-relatorio__observacao p:not([class]) { color: var(--tc-texto); }
 
 .tc-relatorio__fecho { padding: 0 var(--tc-e5) var(--tc-e6); font-size: 1.5rem; }
 .tc-relatorio__assinatura { color: var(--tc-texto-secundario); font-style: normal; }
@@ -558,7 +556,6 @@ html.tc-js .tc-menu[data-aberto="true"] .tc-menu__lista { display: flex; }
   padding-block: var(--tc-e5);
   border-top: 1px solid var(--tc-latao);
 }
-.tc-protocolo:first-child { border-top-color: var(--tc-latao); }
 .tc-protocolo__numero {
   font: var(--tc-titulo-2);
   color: var(--tc-latao);
@@ -596,18 +593,20 @@ html.tc-js .tc-menu[data-aberto="true"] .tc-menu__lista { display: flex; }
 /* ---------- 15. FAQ ------------------------------------------------------------------ */
 .tc-faq__lista { margin-top: var(--tc-e7); }
 .tc-faq { border-top: 1px solid var(--tc-borda); }
-.tc-faq:last-child { border-bottom: 1px solid var(--tc-borda); }
+.tc-faq__coluna:last-child .tc-faq:last-child { border-bottom: 1px solid var(--tc-borda); }
 
-/* em telas largas, duas colunas de perguntas (3 + 3) em vez de uma coluna
-   presa a ~780px com quase metade do envelope em branco decorativo — usa o
-   mesmo componente-acordeão, só reflui o layout. */
+/* em telas largas, duas colunas de perguntas (4 + 3) em vez de uma coluna
+   presa a ~780px com quase metade do envelope em branco decorativo. São duas
+   listas independentes (não column-count): abrir uma pergunta só empurra as de
+   baixo na mesma coluna, nada troca de coluna. */
 @media (min-width: 900px) {
   .tc-faq__lista {
-    column-count: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     column-gap: var(--tc-e8);
-    border-bottom: 1px solid var(--tc-borda);
+    align-items: start;
   }
-  .tc-faq { break-inside: avoid; border-bottom: 0; }
+  .tc-faq:last-child { border-bottom: 1px solid var(--tc-borda); }
 }
 .tc-faq summary {
   display: flex;

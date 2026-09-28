@@ -17,7 +17,7 @@
 | `08-brand-book/` | Manual completo |
 | `09-qa/` | Scorecard e riscos abertos |
 | `10-site/` | Landing page estática (HTML/CSS), pronta para GitHub Pages ou Netlify depois dos dados reais |
-| `11-lancamento/` | Revisões de texto e SEO, guia do Perfil de Empresa no Google e checklist antes de publicar |
+| `11-lancamento/` | Como publicar o site, revisões de texto e SEO, guia do Perfil de Empresa no Google e checklist antes de publicar |
 | `_fonte/` | Scripts que geram tudo |
 
 ## Regenerar

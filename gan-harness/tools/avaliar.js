@@ -105,7 +105,7 @@ function coletarNoNavegador(args) {
       }
     }
     // gradientes e sombras
-    if (/gradient/.test(cs.backgroundImage) && !/^repeating-linear-gradient/.test(cs.backgroundImage.trim())) res.gradientes.push({ el: sel(el), valor: cs.backgroundImage.slice(0, 120) });
+    if (/gradient/.test(cs.backgroundImage) && !el.classList.contains('tc-foto')) res.gradientes.push({ el: sel(el), valor: cs.backgroundImage.slice(0, 120) });
     if (cs.boxShadow !== 'none') {
       const temBlur = cs.boxShadow.split(/,(?![^(]*\))/).some((s) => { const nums = s.replace(/rgba?\([^)]*\)/, '').trim().split(/\s+/).map(parseFloat); return (nums[2] || 0) > 0; });
       res.sombras.push({ el: sel(el), valor: cs.boxShadow.slice(0, 100), comDesfoque: temBlur });
@@ -174,16 +174,16 @@ async function main() {
     page.on('pageerror', (e) => relatorio.console.push(`[${w}] pageerror: ${String(e).slice(0, 200)}`));
     page.on('response', async (r) => {
       if (r.status() >= 400) relatorio.requisicoesFalhas.push(`[${w}] ${r.status()} ${r.url()}`);
-      if (w === 1440) { try { relatorio.pesoBytes += (await r.body()).length; } catch (_) { /* redirecionamentos */ } }
     });
     await page.goto(URL_BASE, { waitUntil: 'networkidle' });
     await page.evaluate(() => document.fonts.ready);
+    if (w === 1440) relatorio.pesoBytes = await page.evaluate(() => [...performance.getEntriesByType('navigation'), ...performance.getEntriesByType('resource')].reduce((t, e) => t + (e.encodedBodySize || 0), 0));
     const info = { };
     info.fontes = await page.evaluate(() => ({ literata: document.fonts.check('600 16px "Literata"'), instrument: document.fonts.check('400 16px "Instrument Sans"'), carregadas: [...document.fonts].filter((f) => f.status === 'loaded').map((f) => `${f.family} ${f.style} ${f.weight}`) }));
     info.overflow = await page.evaluate(() => {
       const W = document.documentElement.clientWidth;
       const fora = [...document.querySelectorAll('body *')].filter((e) => { const r = e.getBoundingClientRect(); return r.width > 0 && (r.right > W + 1 || r.left < -1); })
-        .filter((e) => !e.closest('[aria-hidden="true"]') || true).slice(0, 12).map((e) => `${e.tagName.toLowerCase()}${e.id ? '#' + e.id : ''}${e.className && typeof e.className === 'string' ? '.' + e.className.split(' ')[0] : ''} (${Math.round(e.getBoundingClientRect().left)}→${Math.round(e.getBoundingClientRect().right)})`);
+        .slice(0, 12).map((e) => `${e.tagName.toLowerCase()}${e.id ? '#' + e.id : ''}${e.className && typeof e.className === 'string' ? '.' + e.className.split(' ')[0] : ''} (${Math.round(e.getBoundingClientRect().left)}→${Math.round(e.getBoundingClientRect().right)})`);
       return { scrollWidth: document.documentElement.scrollWidth, clientWidth: W, rolagemHorizontal: document.documentElement.scrollWidth > W, elementosForaDaTela: fora };
     });
     await page.screenshot({ path: path.join(OUT, `dobra-${w}.png`) });
@@ -256,7 +256,8 @@ async function main() {
     if (w === 1440) {
       await page.screenshot({ path: path.join(OUT, 'escuro-pagina-inteira-1440.png'), fullPage: true });
       const r = await page.evaluate(coletarNoNavegador, { PALETA, PROIBIDAS });
-      relatorio.modoEscuro = { falhasDeContraste: r.contraste.length, exemplos: r.contraste.slice(0, 8) };
+      const travado = await page.evaluate(() => document.documentElement.dataset.tema === 'claro');
+      relatorio.modoEscuro = { travadoNoClaro: travado, falhasDeContraste: r.contraste.length, exemplos: r.contraste.slice(0, 8) };
     }
     await ctx.close();
   }
@@ -316,7 +317,7 @@ async function main() {
   linhas.push(`- Menu 390: ${JSON.stringify(L[390].menu)}`);
   linhas.push(`- FAQ 390: ${JSON.stringify(L[390].faq)}`);
   linhas.push(`- Movimento reduzido (elementos ainda animando): ${relatorio.movimentoReduzido.length ? JSON.stringify(relatorio.movimentoReduzido) : 'nenhum'}`);
-  linhas.push(`- Modo escuro: ${relatorio.modoEscuro.falhasDeContraste} falhas de contraste${relatorio.modoEscuro.exemplos.length ? ' → ' + relatorio.modoEscuro.exemplos.slice(0, 5).map((c) => `${c.el} "${c.texto}" ${c.razao}:1`).join('; ') : ''}`);
+  linhas.push(relatorio.modoEscuro.travadoNoClaro ? '- Modo escuro: não testado (a página trava o tema claro com data-tema="claro")' : `- Modo escuro: ${relatorio.modoEscuro.falhasDeContraste} falhas de contraste${relatorio.modoEscuro.exemplos.length ? ' → ' + relatorio.modoEscuro.exemplos.slice(0, 5).map((c) => `${c.el} "${c.texto}" ${c.razao}:1`).join('; ') : ''}`);
   linhas.push('', '## Arquivos', fs.readdirSync(OUT).filter((f) => f.endsWith('.png')).map((f) => '- ' + f).join('\n'));
   fs.writeFileSync(path.join(OUT, 'relatorio.md'), linhas.join('\n') + '\n');
   console.log(linhas.join('\n'));

@@ -6,6 +6,7 @@
 (function () {
   "use strict";
 
+  var raiz = document.documentElement;
   var menu = document.getElementById("tc-menu");
   if (!menu) return;
   var botao = menu.querySelector(".tc-menu__botao");
@@ -25,8 +26,20 @@
     if (veu) veu.hidden = aberto;
   }
 
-  fechar();
-  botao.addEventListener("click", alternar);
+  try {
+    fechar();
+    botao.addEventListener("click", alternar);
+
+    // Tab para fora do menu (foco num elemento fora dele) fecha o painel e o véu,
+    // para o foco nunca ficar escondido atrás deles (WCAG 2.4.11).
+    menu.addEventListener("focusout", function (evento) {
+      if (menu.getAttribute("data-aberto") === "true" && evento.relatedTarget && !menu.contains(evento.relatedTarget)) fechar();
+    });
+  } catch (erro) {
+    // Qualquer falha aqui devolve o modo sem JS: a lista de links fica sempre visível.
+    raiz.classList.remove("tc-js");
+    return;
+  }
 
   lista.querySelectorAll("a").forEach(function (link) {
     link.addEventListener("click", fechar);

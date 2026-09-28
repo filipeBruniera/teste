@@ -37,7 +37,8 @@
 
 - **Tipo:** manter `LocalBusiness`. Não existe subtipo de pet sitting no schema.org. `VeterinaryCare` e `AnimalShelter` foram descartados de propósito, porque contrariam o "não parecer veterinária" da estratégia.
 - **Especificidade:** entra por `serviceType` e `hasOfferCatalog` (pet sitting em domicílio; passeios com cães).
-- **Endereço:** sem `address`, e isso é o correto para uma empresa de área de atendimento (privacidade). Usar `areaServed` estruturado (`City` / `Place`).
+- **Endereço:** sem rua nem número, por privacidade. Usar `areaServed` estruturado (`City` / `Place`).
+  - **Correção na revisão do PR:** o Google trata `address` como obrigatório em `LocalBusiness`. Por isso entrou um `PostalAddress` parcial, só com cidade, UF e país. Isso atende à exigência sem expor a casa da Clara.
 - **`logo`:** símbolo quadrado de 512 px (`04-logo/png/tc-simbolo-512px.png`, copiado para `10-site/assets/logo/`).
 - **`image`:** `og-capa.png` até existir uma foto real, seguindo o protocolo de privacidade.
 - **`sameAs`:** omitido até haver um @ real do Instagram.
@@ -85,6 +86,7 @@ Site de uma página só, sem área privada: `Allow: /` e a indicação do sitema
 | `robots.txt` e `sitemap.xml` | **Aplicado**, com os marcadores `[DOMINIO]` e `[DATA_DE_PUBLICACAO]` |
 | Perguntas do FAQ como `<h3>` | **Aplicado** nas 7 perguntas (incluindo a nova, do hotelzinho) |
 | Área de atendimento no rodapé | **Aplicado**: marcador `area-atendimento` |
+| `address` parcial no JSON-LD (cidade, UF, país) | **Aplicado** na revisão do PR (ver nota em JSON-LD) |
 | Bairro nos subtítulos de Serviços | **Não aplicado**. O bairro já aparece no title, na description, no rótulo do hero, no rodapé e no JSON-LD; nos subtítulos, os textos propostos ("passeadora de cães de [BAIRRO]") pesavam o tom da marca |
 | `FAQPage` | **Não aplicado** (prioridade baixa, sem rich result) |
 | `404.html` | **Não aplicado** (opcional; o host tem a sua) |

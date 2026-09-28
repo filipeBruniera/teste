@@ -1,5 +1,7 @@
 # Site da Tia Clara — `tia-clara/10-site/`
 
+> Este guia fica **fora** de `10-site/` de propósito: tudo o que está dentro dessa pasta é publicado, e estas notas internas (hipóteses a confirmar, marcadores) não podem virar uma URL pública.
+
 Landing page one-page, estática (HTML + CSS, um pouco de JS vanilla e opcional). Sem build, sem dependências externas obrigatórias. Segue à risca `tia-clara/05-design-system/tokens.css` e `design-system.md` — nenhuma cor, fonte, raio ou sombra fora dos tokens.
 
 ## Como publicar
@@ -34,14 +36,14 @@ Além dos marcadores visíveis, há marcadores **de código** que precisam ser t
 |---|---|---|
 | `55XXXXXXXXXXX` | os três links `wa.me` (cabeçalho, herói, CTA final) | número real do WhatsApp, com DDI e DDD |
 | `[DOMINIO]` | `canonical`, `og:url`, `og:image`, `twitter:image`, JSON-LD, `robots.txt`, `sitemap.xml` | domínio do site, sem barra final (ex.: `tiaclara.com.br`) |
-| `[BAIRRO]`, `[CIDADE]` | `<title>`, meta description, JSON-LD `areaServed` | bairro principal e cidade |
+| `[BAIRRO]`, `[CIDADE]`, `[UF]` | `<title>`, meta description, JSON-LD `areaServed` e `address` (só cidade, UF e país, nunca rua) | bairro principal, cidade e sigla do estado |
 | `[TELEFONE]` | JSON-LD `telephone` | telefone no formato `+55 11 91234-5678` |
 | `[FAIXA_DE_PRECO]` | JSON-LD `priceRange` | faixa de preço (ex.: `R$ 60–120`) ou remova a chave |
 | `[DATA_DE_PUBLICACAO]` | `sitemap.xml` | data de publicação, `AAAA-MM-DD` |
 
 Para conferir que não sobrou nenhum: `grep -rnE "\[[A-Z_]+\]|55X{5,}" tia-clara/10-site --include=*.html --include=*.txt --include=*.xml` não pode retornar nada. O JSON-LD não tem `sameAs` (Instagram) de propósito, até haver um @ real: adicione `"sameAs": ["https://instagram.com/SEU_USUARIO"]` quando existir. Não adicione `aggregateRating` nem `review` enquanto os depoimentos forem marcadores.
 
-A lista completa do que falta para publicar, incluindo as promessas a confirmar com a Clara, está em [`../11-lancamento/checklist-pre-lancamento.md`](../11-lancamento/checklist-pre-lancamento.md).
+A lista completa do que falta para publicar, incluindo as promessas a confirmar com a Clara, está em [`checklist-pre-lancamento.md`](checklist-pre-lancamento.md).
 
 Nenhum preço, telefone, @ de Instagram, nome de cliente, depoimento ou estatística foi inventado como se fosse real: tudo isso está marcado.
 
@@ -60,7 +62,7 @@ A `01-estrategia/estrategia.md` marca alguns protocolos e diferenciais como hip�
   index.html          um h1, uma seção por bloco do briefing, JSON-LD LocalBusiness (área de atendimento, sem endereço)
   css/tokens.css       cópia de 05-design-system/tokens.css (só caminho das fontes mudou)
   css/site.css         estilos do site, só com var(--tc-…)
-  js/site.js           opcional: sincroniza aria-expanded do menu, Esc fecha, funciona sem JS
+  js/site.js           opcional: menu do celular (aria-expanded, Esc, clique fora, foco saindo); se falhar, volta ao modo sem JS
   assets/logo/…         SVGs copiados de 04-logo/master
   assets/fontes/…       Literata e Instrument Sans (OFL) — WOFF2 com subconjunto, ver "Fontes" abaixo
   assets/og-capa.png    imagem de compartilhamento (Open Graph), gerada no estilo das peças de autoridade — não é fotografia, é tipografia da marca
