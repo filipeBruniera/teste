@@ -18,6 +18,7 @@
 | `09-qa/` | Scorecard e riscos abertos |
 | `10-site/` | Landing page estática (HTML/CSS), pronta para GitHub Pages ou Netlify depois dos dados reais |
 | `11-lancamento/` | Como publicar o site, revisões de texto e SEO, guia do Perfil de Empresa no Google e checklist antes de publicar |
+| `12-identidade-v2/` | **Nova identidade (em andamento):** a Clara rejeitou a logo e as cores da v1. Brief, diagnóstico, 3 paletas em verde-sálvia médio, 3 rotas de logo e pranchas para ela escolher. Ver o [PRD](../.claude/prds/tia-clara-nova-identidade.prd.md) |
 | `_fonte/` | Scripts que geram tudo |
 
 ## Regenerar

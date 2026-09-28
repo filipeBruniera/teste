@@ -8,24 +8,96 @@
   "idea": "Criar uma identidade visual para serviço de pet sitter (visitas na casa do tutor) e dog walker (passeios)",
   "business": {
     "modelo": "Profissional autônoma / marca pessoal (hipótese: a própria Clara presta o serviço)",
-    "servicos": ["pet sitting em domicílio (cães e gatos)", "passeios com cães (dog walking)"],
+    "servicos": [
+      "pet sitting em domicílio (cães e gatos)",
+      "passeios com cães (dog walking)"
+    ],
     "geografia": "Brasil, contexto urbano (cidade não informada)",
     "idioma": "Português do Brasil",
     "tier": "Hipótese: médio-alto local — profissional diferenciada de 'vizinha que passeia' e de apps de plataforma"
   },
   "audience": "Tutores de pets",
-  "archetypes_supplied": ["Guardiã", "Curadora", "Cuidadora"],
-  "desired_perception": ["segurança", "competência", "afeto"],
-  "avoid": ["excesso de infantilização", "ser boazinha demais", "parecer veterinária"],
+  "archetypes_supplied": [
+    "Guardiã",
+    "Curadora",
+    "Cuidadora"
+  ],
+  "desired_perception": [
+    "segurança",
+    "competência",
+    "afeto"
+  ],
+  "avoid": [
+    "excesso de infantilização",
+    "ser boazinha demais",
+    "parecer veterinária"
+  ],
   "objective": "Transmitir confiança e diferenciar o trabalho",
-  "channels_assumed": ["Instagram (feed, stories, reels)", "WhatsApp Business (avatar, status, catálogo, relatórios)", "Perfil de Empresa no Google", "impressos: cartão, adesivo, plaquinha de identificação, chaveiro de chaves", "uniforme de passeio (camiseta/colete/bandana)", "relatório de visita"],
+  "channels_assumed": [
+    "Instagram (feed, stories, reels)",
+    "WhatsApp Business (avatar, status, catálogo, relatórios)",
+    "Perfil de Empresa no Google",
+    "impressos: cartão, adesivo, plaquinha de identificação, chaveiro de chaves",
+    "uniforme de passeio (camiseta/colete/bandana)",
+    "relatório de visita"
+  ],
   "mandatory_assets": [],
-  "prohibited_motifs": ["patinhas como símbolo principal", "ossinhos", "corações fofos", "casinha + patinha", "silhuetas de cão+gato em cartoon", "cruz / estetoscópio / azul-hospital / verde-água clínico", "fontes arredondadas infantis", "paletas de doce (rosa-chiclete, azul-bebê)"],
+  "prohibited_motifs": [
+    "patinhas como símbolo principal",
+    "ossinhos",
+    "corações fofos",
+    "casinha + patinha",
+    "silhuetas de cão+gato em cartoon",
+    "cruz / estetoscópio / azul-hospital / verde-água clínico",
+    "fontes arredondadas infantis",
+    "paletas de doce (rosa-chiclete, azul-bebê)"
+  ],
   "mode": "autonomous",
   "working_assumptions": [
     "Clara é a prestadora do serviço; a marca é pessoal e não uma plataforma",
     "Atende cães e gatos no pet sitting; dog walking apenas cães",
     "Brasil, português, WhatsApp como canal principal de relacionamento",
     "Sem restrição de cores ou símbolos pré-existentes"
-  ]
+  ],
+  "v2": {
+    "motivo": "A Clara rejeitou a logo e a paleta da v1: escura, 'roqueira', 'Barbie gótica' e parecida com a logo de uma colega de trabalho.",
+    "prd": ".claude/prds/tia-clara-nova-identidade.prd.md",
+    "pessoa": {
+      "idade": 31,
+      "cidade": "Ubatuba (SP), veio de Limeira",
+      "experiencia": "Mais de 10 anos com animais como auxiliar de veterinário e chefe de internação",
+      "temperamento": "Se derrete com os bichos; o afeto vai para o animal, com o tutor é objetiva"
+    },
+    "area_atendida": "Somente a região central de Ubatuba",
+    "descritor": "Auxiliar de veterinário · Pet sitter & dog walker (ordem final a confirmar)",
+    "credencial": "Experiência em cuidados de enfermagem veterinária (auxiliar de veterinário)",
+    "credencial_regra": "Comunicar como experiência, nunca como oferta de serviço clínico (confirmar com o CRMV-SP)",
+    "frase_de_apoio": "Mais qualidade de tempo para quem mais importa (redação final a confirmar)",
+    "cor": "Verde-sálvia médio como cor principal, mais claro que o pinho da v1",
+    "referencia": {
+      "arquivo": "00-brief/referencias/referencia-cliente-01.png",
+      "o_que_tem": [
+        "cão e gato ilustrados",
+        "litoral de Ubatuba: mar, serra, sol",
+        "sol laranja",
+        "nome em letra cursiva",
+        "UBATUBA na assinatura",
+        "silhueta dela com os bichos de costas"
+      ],
+      "riscos": [
+        "silhueta no pôr do sol e selo com cão e gato são clichês da categoria",
+        "detalhe some em tamanho pequeno",
+        "patinha (proibida como símbolo principal na v1)"
+      ]
+    },
+    "nao_pode": [
+      "parecer a logo da colega de trabalho da Clara (logo ainda não recebida)",
+      "usar 'Cuidar também é um ato de amor' (frase da Clínica Veterinária Itaguá, antiga empregadora)",
+      "lembrar a identidade da Clínica Veterinária Itaguá",
+      "verde-escuro como cor dominante",
+      "aspecto gótico ou roqueiro: fundo escuro dominante, metal, arco que lembre lápide, serifa dramática",
+      "códigos de clínica: cruz, azul hospitalar, estetoscópio, jaleco",
+      "infantilizar"
+    ]
+  }
 }

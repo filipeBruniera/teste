@@ -2,7 +2,14 @@
   "run_id": "tia-clara-2026-09-27",
   "brand_name": "Tia Clara Pet Sitter & Dog Walker",
   "phase": 9,
-  "completed_gates": ["S1", "V1", "C1", "L1", "D1", "QA"],
+  "completed_gates": [
+    "S1",
+    "V1",
+    "C1",
+    "L1",
+    "D1",
+    "QA"
+  ],
   "selected_territory": "A · A Plaquinha (com a gramática de relatório do B)",
   "selected_logo_family": "Plaquinha em arco + furo + C (Literata); logotipo 'Tia' itálico + 'Clara' redondo com argola no i",
   "figma_file_key": null,
@@ -28,5 +35,23 @@
     "Fotografia real dentro das regras",
     "Confirmar na fonte a estatística de 83% (pesquisa Rover 2026)",
     "Recriar relatório e modelos no Canva para uso diário"
-  ]
+  ],
+  "v2": {
+    "status": "marco 1 em andamento: direção (paleta + rota de logo) para a Clara escolher",
+    "gates_reabertos": [
+      "C1",
+      "L1",
+      "D1"
+    ],
+    "pasta": "12-identidade-v2/",
+    "plano": ".claude/plans/tia-clara-nova-identidade.plan.md",
+    "pendencias": [
+      "Logo da colega de trabalho, para checar distinção",
+      "Identidade da Clínica Veterinária Itaguá, para checar distinção",
+      "Redação final da frase de apoio",
+      "Ordem do descritor",
+      "Manter ou não 'Pode deixar comigo.' e 'Tudo certo por aqui.'",
+      "Redação da credencial aprovada pelo CRMV-SP"
+    ]
+  }
 }

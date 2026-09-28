@@ -1,0 +1,209 @@
+[
+  {
+    "id": 1,
+    "nome": "Sálvia da serra",
+    "ideia": "O verde da Mata Atlântica depois da chuva: neutro, calmo, o mais versátil.",
+    "cores": {
+      "salvia": "#86A38A",
+      "salvia_claro": "#DDE7DB",
+      "texto": "#37543F",
+      "fundo": "#F7F3EA",
+      "superficie": "#FFFDF8",
+      "sol": "#E9A13B",
+      "mar": "#7FA7A8"
+    },
+    "medidas": {
+      "sálvia_hsl": [
+        128,
+        13.6,
+        58.2
+      ],
+      "texto_hsl": [
+        137,
+        20.9,
+        27.3
+      ],
+      "pares": [
+        {
+          "frente": "texto",
+          "fundo": "fundo",
+          "razao": 7.58,
+          "minimo": 4.5,
+          "uso": "texto corrido",
+          "ok": true
+        },
+        {
+          "frente": "texto",
+          "fundo": "superficie",
+          "razao": 8.26,
+          "minimo": 4.5,
+          "uso": "texto em cartões",
+          "ok": true
+        },
+        {
+          "frente": "texto",
+          "fundo": "salvia_claro",
+          "razao": 6.6,
+          "minimo": 4.5,
+          "uso": "texto em blocos de apoio",
+          "ok": true
+        },
+        {
+          "frente": "fundo",
+          "fundo": "texto",
+          "razao": 7.58,
+          "minimo": 4.5,
+          "uso": "botão e faixa: creme sobre verde de texto",
+          "ok": true
+        },
+        {
+          "frente": "texto",
+          "fundo": "salvia",
+          "razao": 3.04,
+          "minimo": 3.0,
+          "uso": "só título grande sobre sálvia",
+          "ok": true
+        }
+      ],
+      "erros": []
+    }
+  },
+  {
+    "id": 2,
+    "nome": "Sálvia oliva",
+    "ideia": "Puxado para o amarelo: mais quente e mais \"casa\", combina com areia.",
+    "cores": {
+      "salvia": "#9AAB82",
+      "salvia_claro": "#E5EAD7",
+      "texto": "#45552F",
+      "fundo": "#F8F2E6",
+      "superficie": "#FFFCF5",
+      "sol": "#E58B3A",
+      "mar": "#8FAEA2"
+    },
+    "medidas": {
+      "sálvia_hsl": [
+        85,
+        19.6,
+        59.0
+      ],
+      "texto_hsl": [
+        85,
+        28.8,
+        25.9
+      ],
+      "pares": [
+        {
+          "frente": "texto",
+          "fundo": "fundo",
+          "razao": 7.26,
+          "minimo": 4.5,
+          "uso": "texto corrido",
+          "ok": true
+        },
+        {
+          "frente": "texto",
+          "fundo": "superficie",
+          "razao": 7.9,
+          "minimo": 4.5,
+          "uso": "texto em cartões",
+          "ok": true
+        },
+        {
+          "frente": "texto",
+          "fundo": "salvia_claro",
+          "razao": 6.59,
+          "minimo": 4.5,
+          "uso": "texto em blocos de apoio",
+          "ok": true
+        },
+        {
+          "frente": "fundo",
+          "fundo": "texto",
+          "razao": 7.26,
+          "minimo": 4.5,
+          "uso": "botão e faixa: creme sobre verde de texto",
+          "ok": true
+        },
+        {
+          "frente": "texto",
+          "fundo": "salvia",
+          "razao": 3.29,
+          "minimo": 3.0,
+          "uso": "só título grande sobre sálvia",
+          "ok": true
+        }
+      ],
+      "erros": []
+    }
+  },
+  {
+    "id": 3,
+    "nome": "Sálvia do mar",
+    "ideia": "Puxado para o azul: fresco, litorâneo, o mais \"Ubatuba\".",
+    "cores": {
+      "salvia": "#7FA59C",
+      "salvia_claro": "#D9E8E3",
+      "texto": "#2E5550",
+      "fundo": "#F6F3EC",
+      "superficie": "#FFFFFB",
+      "sol": "#EFAE45",
+      "mar": "#5F9AA8"
+    },
+    "medidas": {
+      "sálvia_hsl": [
+        166,
+        17.4,
+        57.3
+      ],
+      "texto_hsl": [
+        172,
+        29.8,
+        25.7
+      ],
+      "pares": [
+        {
+          "frente": "texto",
+          "fundo": "fundo",
+          "razao": 7.49,
+          "minimo": 4.5,
+          "uso": "texto corrido",
+          "ok": true
+        },
+        {
+          "frente": "texto",
+          "fundo": "superficie",
+          "razao": 8.28,
+          "minimo": 4.5,
+          "uso": "texto em cartões",
+          "ok": true
+        },
+        {
+          "frente": "texto",
+          "fundo": "salvia_claro",
+          "razao": 6.56,
+          "minimo": 4.5,
+          "uso": "texto em blocos de apoio",
+          "ok": true
+        },
+        {
+          "frente": "fundo",
+          "fundo": "texto",
+          "razao": 7.49,
+          "minimo": 4.5,
+          "uso": "botão e faixa: creme sobre verde de texto",
+          "ok": true
+        },
+        {
+          "frente": "texto",
+          "fundo": "salvia",
+          "razao": 3.07,
+          "minimo": 3.0,
+          "uso": "só título grande sobre sálvia",
+          "ok": true
+        }
+      ],
+      "erros": []
+    }
+  }
+]

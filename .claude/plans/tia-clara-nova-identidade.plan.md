@@ -34,12 +34,12 @@ Tudo fica numa pasta nova, `tia-clara/12-identidade-v2/`. A v1 continua intacta 
 | `tia-clara/12-identidade-v2/00-brief-v2.md` | CREATE | Requisitos da v2 numa página só (derivados do PRD) |
 | `tia-clara/12-identidade-v2/01-diagnostico.md` | CREATE | O que falhou na v1 e o que a Clara gosta na referência, com os riscos (genérico, ilegível em tamanho pequeno) |
 | `tia-clara/_fonte/v2_paletas.py` | CREATE | Define as 3 paletas, mede o contraste e o "quão claro", gera a prancha HTML; sai com código 1 se algum par de texto reprovar |
-| `tia-clara/12-identidade-v2/01-paletas/` | CREATE | `paletas.json`, `paletas.html` e `paletas.png` |
+| `tia-clara/12-identidade-v2/02-paletas/` | CREATE | `paletas.json`, `paletas.html` e `paletas.png` |
 | `tia-clara/12-identidade-v2/fontes/` | CREATE | Fontes OFL novas (cursiva e sans humanista), com as licenças |
 | `tia-clara/_fonte/v2_rotas.py` | CREATE | Gera os SVGs de cada rota (símbolo, assinatura com "Ubatuba" e descritor, versão reduzida), com o mesmo método de `marca.py` |
-| `tia-clara/12-identidade-v2/02-rotas/` | CREATE | `rota-{a,b,c}/tc-*.svg`, `teste-reducao.html` e `.png`, `rotas.md` |
+| `tia-clara/12-identidade-v2/03-rotas/` | CREATE | `rota-{a,b,c}/tc-*.svg`, `teste-reducao.html` e `.png`, `rotas.md` |
 | `tia-clara/_fonte/v2_apresentacao.py` | CREATE | Monta as aplicações mínimas e as pranchas para a Clara |
-| `tia-clara/12-identidade-v2/03-apresentacao/` | CREATE | `1-paletas.png`, `2-rotas.png`, `3-aplicacoes-rota-*.png` (1080×1350) |
+| `tia-clara/12-identidade-v2/04-apresentacao/` | CREATE | `1-paletas.png`, `2-rotas.png`, `3-aplicacoes-rota-*.png` (1080×1350) |
 | `tia-clara/README.md` | UPDATE | Linha da pasta `12-identidade-v2/` |
 | `.claude/prds/tia-clara-nova-identidade.prd.md` | UPDATE | Marco 1 `in-progress` agora e `complete` quando a Clara escolher |
 
@@ -99,7 +99,7 @@ Tudo fica numa pasta nova, `tia-clara/12-identidade-v2/`. A v1 continua intacta 
   - `python3 tia-clara/_fonte/v2_rotas.py` imprime `ok` por arquivo;
   - todo SVG sem `<text>`: `grep -L "<text" tia-clara/12-identidade-v2/02-rotas/*/*.svg`;
   - a prancha de redução renderizada e revisada: cada símbolo precisa ser reconhecível a 32 px;
-  - `grep -ri "ato de amor" tia-clara/12-identidade-v2` não retorna nada.
+  - `grep -ri "ato de amor" tia-clara/12-identidade-v2 --include=*.svg --include=*.html` não retorna nada. Os `.md` citam a frase como proibida.
 
 ### Tarefa 6: aplicações mínimas e pranchas para a Clara
 - **Ação**: `v2_apresentacao.py` aplica cada rota, na paleta que combinar melhor com ela, em:
@@ -135,7 +135,7 @@ python3 tia-clara/_fonte/v2_rotas.py                    # "ok" por SVG
 python3 tia-clara/_fonte/v2_apresentacao.py
 NODE_PATH=$(npm root -g) node tia-clara/_fonte/render.js tia-clara/12-identidade-v2/02-rotas/teste-reducao.html tia-clara/12-identidade-v2/02-rotas/teste-reducao.png 1600 900
 grep -rL "<text" tia-clara/12-identidade-v2/02-rotas/*/*.svg   # lista todos (nenhum usa <text>)
-! grep -rqi "ato de amor" tia-clara/12-identidade-v2          # a frase da clínica não aparece
+! grep -rqi "ato de amor" tia-clara/12-identidade-v2 --include=*.svg --include=*.html --include=*.json   # a frase da clínica não aparece nas peças (os .md a citam como proibida)
 python3 -c "import json; json.load(open('tia-clara/00-brief/brief.json')); json.load(open('tia-clara/00-brief/brand-state.json'))"
 ```
 
@@ -151,10 +151,10 @@ python3 -c "import json; json.load(open('tia-clara/00-brief/brief.json')); json.
 | Invadir o marco 2 (refinar a rota antes da escolha) | Média | Parar na escolha: sem versões finais, variações de cor da logo ou brand book |
 
 ## Aceite
-- [ ] Tarefas 1–6 e 8 completas; tarefa 7 completa ou com pendência registrada
-- [ ] `v2_paletas.py` passa: 3 paletas com sálvia médio dentro da faixa medida e todos os pares de texto AA
-- [ ] 2 ou 3 rotas com símbolo, assinatura e versão reduzida reconhecível a 32 px e em 1 cor
-- [ ] Nenhum item da lista "não pode" (grep da frase e revisão visual)
-- [ ] Pranchas 1080×1350 prontas para enviar à Clara
-- [ ] Padrões seguidos (`marca.py`, `render.js`, `teste-L1`), não reinventados
+- [x] Tarefas 1–6 e 8 completas; tarefa 7 **bloqueada** (falta a logo da colega), com a pendência registrada nas pranchas, em `rotas.md`, no `brand-state.json` e no PRD
+- [x] `v2_paletas.py` passa: 3 paletas com sálvia médio dentro da faixa medida e todos os pares de texto AA (o sol virou só acento gráfico: verde sobre sol dava 3,1–4,3:1)
+- [x] 3 rotas com símbolo, assinatura e versão reduzida: B ✅ a 32 px; C lida como ilhas e sol a 32 px (✅ a 48 px); A no limite a 32 px (registrado no scorecard)
+- [x] Nenhum item da lista "não pode" (grep da frase e revisão visual)
+- [x] Pranchas 1080×1350 prontas para enviar à Clara (sem texto < 28 px nem sobreposição, checado pelo `v2_renderizar.js`)
+- [x] Padrões seguidos (`marca.py`, `render.js`, `teste-L1`), não reinventados. `marca.py` ganhou só a decomposição de glifos compostos, e a v1 regenerada saiu idêntica
 - [ ] Escolha da Clara registrada, fechando o marco 1

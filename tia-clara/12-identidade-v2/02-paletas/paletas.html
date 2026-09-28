@@ -1,0 +1,100 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
+<style>
+@font-face{font-family:Fig;src:url("../fontes/Figtree[wght].ttf");font-weight:300 900}
+@font-face{font-family:Nor;src:url("../fontes/Norican-Regular.ttf")}
+*{box-sizing:border-box;margin:0}
+body{width:1600px;background:#FBF9F4;color:#2F3B33;font:16px/1.45 Fig;padding:48px 48px 56px}
+h1{font:700 34px Fig;letter-spacing:-.01em} .sub{margin-top:6px;color:#5B665E;font-size:18px}
+.grade{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:32px}
+.p{background:#fff;border:1px solid #E6E2D8;border-radius:18px;padding:26px}
+.cab{display:flex;gap:16px;align-items:flex-start} .num{font:800 40px/1 Fig;color:#9AA59C}
+h2{font:700 24px Fig} .cab p{color:#5B665E;font-size:15px;margin-top:2px}
+.amostras{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:20px}
+.sw{height:58px;border-radius:10px;border:1px solid #0000000f} .rot{font:600 12px Fig;margin-top:6px} .hex{font:500 12px Fig;color:#6B756D}
+.prop{display:flex;height:26px;margin-top:18px;border-radius:8px;overflow:hidden;border:1px solid #0000000f;font:600 11px/26px Fig;color:#2F3B33}
+.prop span{padding-left:8px;white-space:nowrap;overflow:hidden}
+.mini{position:relative;margin-top:14px;border-radius:14px;padding:0 0 20px;overflow:hidden;min-height:250px}
+.topo{position:relative;padding:24px 24px 22px}
+.mini .sol{position:absolute;right:24px;top:22px;width:54px;height:54px;border-radius:50%}
+.mini .cartao,.mini .bt{margin-left:24px;margin-right:24px}
+.nome{font:44px/1.1 Nor} .desc{font:600 12px Fig;letter-spacing:.14em;text-transform:uppercase;margin-top:4px}
+.cartao{margin-top:16px;border-radius:12px;padding:12px 14px;font-size:14px} .lin{padding:3px 0} .lin b{display:inline-block;width:48px;font-variant-numeric:tabular-nums}
+.fecho{font:22px Nor;margin-top:4px}
+.bt{display:inline-block;margin-top:14px;padding:10px 18px;border-radius:999px;font:700 14px Fig}
+table{width:100%;border-collapse:collapse;margin-top:18px;font-size:13px} td{padding:5px 4px;border-top:1px solid #EEEAE1}
+.par{display:inline-block;width:40px;text-align:center;border-radius:6px;padding:2px 0;font-weight:700} .n{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.medida{margin-top:12px;font-size:13px;color:#5B665E}
+</style></head><body>
+<h1>Três paletas em verde-sálvia médio</h1>
+<p class="sub">Mesmos papéis nas três; muda a temperatura do verde. Todas mais claras que a v1 e com contraste de leitura aprovado. O sol é só acento gráfico, nunca fundo de texto.</p>
+<div class="grade">
+<section class="p">
+  <div class="cab"><span class="num">1</span><div><h2>Sálvia da serra</h2><p>O verde da Mata Atlântica depois da chuva: neutro, calmo, o mais versátil.</p></div></div>
+  <div class="amostras"><div class="am"><div class="sw" style="background:#86A38A"></div><div class="rot">Sálvia (principal)</div><div class="hex">#86A38A</div></div><div class="am"><div class="sw" style="background:#DDE7DB"></div><div class="rot">Sálvia claro</div><div class="hex">#DDE7DB</div></div><div class="am"><div class="sw" style="background:#37543F"></div><div class="rot">Verde de texto</div><div class="hex">#37543F</div></div><div class="am"><div class="sw" style="background:#F7F3EA"></div><div class="rot">Fundo creme</div><div class="hex">#F7F3EA</div></div><div class="am"><div class="sw" style="background:#FFFDF8"></div><div class="rot">Superfície</div><div class="hex">#FFFDF8</div></div><div class="am"><div class="sw" style="background:#E9A13B"></div><div class="rot">Sol (acento)</div><div class="hex">#E9A13B</div></div><div class="am"><div class="sw" style="background:#7FA7A8"></div><div class="rot">Mar (apoio)</div><div class="hex">#7FA7A8</div></div></div>
+  <div class="prop" title="proporção de uso">
+    <span style="flex:55;background:#F7F3EA">creme 55</span><span style="flex:25;background:#86A38A">sálvia 25</span>
+    <span style="flex:10;background:#DDE7DB">10</span><span style="flex:7;background:#37543F;color:#F7F3EA">7</span>
+    <span style="flex:3;background:#E9A13B"></span></div>
+  <div class="mini" style="background:#F7F3EA;color:#37543F">
+    <div class="topo" style="background:#86A38A">
+      <div class="sol" style="background:#E9A13B"></div>
+      <div class="nome">Tia Clara</div>
+      <div class="desc">Pet sitter &amp; dog walker · Ubatuba</div>
+    </div>
+    <div class="cartao" style="background:#FFFDF8">
+      <div class="lin"><b>08:02</b> Entrada</div><div class="lin"><b>08:12</b> Passeio · 40 min</div>
+      <div class="fecho">Tudo certo por aqui.</div>
+    </div>
+    <div class="bt" style="background:#37543F;color:#F7F3EA">Agendar visita</div>
+  </div>
+  <table><tr><td><span class="par" style="background:#F7F3EA;color:#37543F">Aa</span></td><td>texto corrido</td><td class="n">7,6:1 ✓</td></tr><tr><td><span class="par" style="background:#FFFDF8;color:#37543F">Aa</span></td><td>texto em cartões</td><td class="n">8,3:1 ✓</td></tr><tr><td><span class="par" style="background:#DDE7DB;color:#37543F">Aa</span></td><td>texto em blocos de apoio</td><td class="n">6,6:1 ✓</td></tr><tr><td><span class="par" style="background:#37543F;color:#F7F3EA">Aa</span></td><td>botão e faixa: creme sobre verde de texto</td><td class="n">7,6:1 ✓</td></tr><tr><td><span class="par" style="background:#86A38A;color:#37543F">Aa</span></td><td>só título grande sobre sálvia</td><td class="n">3,0:1 ✓</td></tr></table>
+  <div class="medida">Sálvia: saturação 13,6 %, luminosidade 58,2 % ·
+    verde de texto: luminosidade 27,3 % (v1: 17 %)</div>
+</section>
+<section class="p">
+  <div class="cab"><span class="num">2</span><div><h2>Sálvia oliva</h2><p>Puxado para o amarelo: mais quente e mais "casa", combina com areia.</p></div></div>
+  <div class="amostras"><div class="am"><div class="sw" style="background:#9AAB82"></div><div class="rot">Sálvia (principal)</div><div class="hex">#9AAB82</div></div><div class="am"><div class="sw" style="background:#E5EAD7"></div><div class="rot">Sálvia claro</div><div class="hex">#E5EAD7</div></div><div class="am"><div class="sw" style="background:#45552F"></div><div class="rot">Verde de texto</div><div class="hex">#45552F</div></div><div class="am"><div class="sw" style="background:#F8F2E6"></div><div class="rot">Fundo creme</div><div class="hex">#F8F2E6</div></div><div class="am"><div class="sw" style="background:#FFFCF5"></div><div class="rot">Superfície</div><div class="hex">#FFFCF5</div></div><div class="am"><div class="sw" style="background:#E58B3A"></div><div class="rot">Sol (acento)</div><div class="hex">#E58B3A</div></div><div class="am"><div class="sw" style="background:#8FAEA2"></div><div class="rot">Mar (apoio)</div><div class="hex">#8FAEA2</div></div></div>
+  <div class="prop" title="proporção de uso">
+    <span style="flex:55;background:#F8F2E6">creme 55</span><span style="flex:25;background:#9AAB82">sálvia 25</span>
+    <span style="flex:10;background:#E5EAD7">10</span><span style="flex:7;background:#45552F;color:#F8F2E6">7</span>
+    <span style="flex:3;background:#E58B3A"></span></div>
+  <div class="mini" style="background:#F8F2E6;color:#45552F">
+    <div class="topo" style="background:#9AAB82">
+      <div class="sol" style="background:#E58B3A"></div>
+      <div class="nome">Tia Clara</div>
+      <div class="desc">Pet sitter &amp; dog walker · Ubatuba</div>
+    </div>
+    <div class="cartao" style="background:#FFFCF5">
+      <div class="lin"><b>08:02</b> Entrada</div><div class="lin"><b>08:12</b> Passeio · 40 min</div>
+      <div class="fecho">Tudo certo por aqui.</div>
+    </div>
+    <div class="bt" style="background:#45552F;color:#F8F2E6">Agendar visita</div>
+  </div>
+  <table><tr><td><span class="par" style="background:#F8F2E6;color:#45552F">Aa</span></td><td>texto corrido</td><td class="n">7,3:1 ✓</td></tr><tr><td><span class="par" style="background:#FFFCF5;color:#45552F">Aa</span></td><td>texto em cartões</td><td class="n">7,9:1 ✓</td></tr><tr><td><span class="par" style="background:#E5EAD7;color:#45552F">Aa</span></td><td>texto em blocos de apoio</td><td class="n">6,6:1 ✓</td></tr><tr><td><span class="par" style="background:#45552F;color:#F8F2E6">Aa</span></td><td>botão e faixa: creme sobre verde de texto</td><td class="n">7,3:1 ✓</td></tr><tr><td><span class="par" style="background:#9AAB82;color:#45552F">Aa</span></td><td>só título grande sobre sálvia</td><td class="n">3,3:1 ✓</td></tr></table>
+  <div class="medida">Sálvia: saturação 19,6 %, luminosidade 59,0 % ·
+    verde de texto: luminosidade 25,9 % (v1: 17 %)</div>
+</section>
+<section class="p">
+  <div class="cab"><span class="num">3</span><div><h2>Sálvia do mar</h2><p>Puxado para o azul: fresco, litorâneo, o mais "Ubatuba".</p></div></div>
+  <div class="amostras"><div class="am"><div class="sw" style="background:#7FA59C"></div><div class="rot">Sálvia (principal)</div><div class="hex">#7FA59C</div></div><div class="am"><div class="sw" style="background:#D9E8E3"></div><div class="rot">Sálvia claro</div><div class="hex">#D9E8E3</div></div><div class="am"><div class="sw" style="background:#2E5550"></div><div class="rot">Verde de texto</div><div class="hex">#2E5550</div></div><div class="am"><div class="sw" style="background:#F6F3EC"></div><div class="rot">Fundo creme</div><div class="hex">#F6F3EC</div></div><div class="am"><div class="sw" style="background:#FFFFFB"></div><div class="rot">Superfície</div><div class="hex">#FFFFFB</div></div><div class="am"><div class="sw" style="background:#EFAE45"></div><div class="rot">Sol (acento)</div><div class="hex">#EFAE45</div></div><div class="am"><div class="sw" style="background:#5F9AA8"></div><div class="rot">Mar (apoio)</div><div class="hex">#5F9AA8</div></div></div>
+  <div class="prop" title="proporção de uso">
+    <span style="flex:55;background:#F6F3EC">creme 55</span><span style="flex:25;background:#7FA59C">sálvia 25</span>
+    <span style="flex:10;background:#D9E8E3">10</span><span style="flex:7;background:#2E5550;color:#F6F3EC">7</span>
+    <span style="flex:3;background:#EFAE45"></span></div>
+  <div class="mini" style="background:#F6F3EC;color:#2E5550">
+    <div class="topo" style="background:#7FA59C">
+      <div class="sol" style="background:#EFAE45"></div>
+      <div class="nome">Tia Clara</div>
+      <div class="desc">Pet sitter &amp; dog walker · Ubatuba</div>
+    </div>
+    <div class="cartao" style="background:#FFFFFB">
+      <div class="lin"><b>08:02</b> Entrada</div><div class="lin"><b>08:12</b> Passeio · 40 min</div>
+      <div class="fecho">Tudo certo por aqui.</div>
+    </div>
+    <div class="bt" style="background:#2E5550;color:#F6F3EC">Agendar visita</div>
+  </div>
+  <table><tr><td><span class="par" style="background:#F6F3EC;color:#2E5550">Aa</span></td><td>texto corrido</td><td class="n">7,5:1 ✓</td></tr><tr><td><span class="par" style="background:#FFFFFB;color:#2E5550">Aa</span></td><td>texto em cartões</td><td class="n">8,3:1 ✓</td></tr><tr><td><span class="par" style="background:#D9E8E3;color:#2E5550">Aa</span></td><td>texto em blocos de apoio</td><td class="n">6,6:1 ✓</td></tr><tr><td><span class="par" style="background:#2E5550;color:#F6F3EC">Aa</span></td><td>botão e faixa: creme sobre verde de texto</td><td class="n">7,5:1 ✓</td></tr><tr><td><span class="par" style="background:#7FA59C;color:#2E5550">Aa</span></td><td>só título grande sobre sálvia</td><td class="n">3,1:1 ✓</td></tr></table>
+  <div class="medida">Sálvia: saturação 17,4 %, luminosidade 57,3 % ·
+    verde de texto: luminosidade 25,7 % (v1: 17 %)</div>
+</section></div>
+</body></html>

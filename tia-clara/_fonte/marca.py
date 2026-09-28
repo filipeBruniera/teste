@@ -13,7 +13,7 @@ import uharfbuzz as hb
 from fontTools.ttLib import TTFont
 from fontTools.pens.svgPathPen import SVGPathPen
 from fontTools.pens.transformPen import TransformPen
-from fontTools.pens.recordingPen import RecordingPen
+from fontTools.pens.recordingPen import DecomposingRecordingPen
 from fontTools.pens.boundsPen import BoundsPen
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
@@ -55,7 +55,7 @@ def glifos(path, texto, tam, x=0, y=0, axes=(), tracking=0):
     ordem = tt.getGlyphOrder(); s = tam / upem; cx = 0; saida = []
     for info, pos in zip(buf.glyph_infos, buf.glyph_positions):
         nome = ordem[info.codepoint]
-        rec = RecordingPen(); gs[nome].draw(rec)
+        rec = DecomposingRecordingPen(gs); gs[nome].draw(rec)  # decompõe glifos compostos (ex.: i = haste + pingo)
         conts, cur = [], []
         for op in rec.value:
             cur.append(op)
