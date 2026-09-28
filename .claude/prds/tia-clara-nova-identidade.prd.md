@@ -91,7 +91,7 @@ Com cuidado para não virar genérico nem ficar ilegível em tamanho pequeno (ve
 
 | # | Marco | Resultado | Status | Plano |
 |---|---|---|---|---|
-| 1 | Direção escolhida | A Clara escolhe 1 entre 3 paletas em sálvia médio e 1 entre 2 ou 3 caminhos de logo inspirados na referência | pending | — |
+| 1 | Direção escolhida | A Clara escolhe 1 entre 3 paletas em sálvia médio e 1 entre 2 ou 3 caminhos de logo inspirados na referência | in-progress | `.claude/plans/tia-clara-nova-identidade.plan.md` |
 | 2 | Logo e paleta aprovadas | Logo final (com versão reduzida), paleta, frase de apoio e credencial aplicadas nas 3 peças; aprovação da Clara e testes de percepção e distinção | pending | — |
 | 3 | Sistema atualizado | Brand book e modelos de produção com a nova identidade | pending | — |
 | 4 | Site e canais prontos | Landing page com a nova identidade, "Ubatuba, região central" e a credencial; checklist de pré-lançamento resolvido | pending | — |
